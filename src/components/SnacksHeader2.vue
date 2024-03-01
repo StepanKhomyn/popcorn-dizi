@@ -33,8 +33,9 @@
                     <li class="nav-item">
                         <router-link to="/contact" class="nav-link links">Контакти</router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link to="/location" class="nav-link links">Локалізація</router-link>
+                    <li class="nav-item flags">
+                        <span class="links"><UAFlag class="flag-icons"/>UA</span>
+                        <span class="links"><UKFlag class="flag-icons"/>UK</span>
                     </li>
                 </ul>
             </div>
@@ -43,8 +44,12 @@
 </template>
 
 <script>
+import UAFlag from "@/assets/country/UAFlag.vue";
+import UKFlag from "@/assets/country/UKFlag.vue";
+
 export default {
-    name: "SnacksHeader"
+    name: "SnacksHeader2",
+    components: {UKFlag, UAFlag}
 }
 </script>
 
@@ -71,9 +76,25 @@ export default {
     margin-right: auto;
 }
 .links{
-    color: #00a691;
+    color: #fafafa;
     font-weight: 600;
     font-family: sans-serif;
     cursor: pointer;
+}
+.logo{
+    width: 200px;
+    height: 98px;
+    background-color: #fafafa;
+    border-radius: 30px;
+}
+.flags{
+    display: flex;
+    align-items: center;
+    padding-right: var(--bs-navbar-nav-link-padding-x);
+    padding-left: var(--bs-navbar-nav-link-padding-x);
+    gap: 15px;
+}
+.flag-icons{
+    margin-right: 5px;
 }
 </style>

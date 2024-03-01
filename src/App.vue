@@ -1,19 +1,16 @@
 <template>
     <SnacksHeader/>
-    <SnacksHeader2 style="margin-top: 50px"/>
-<!-- <CaruseList/>-->
+ <CaruseList/>
 </template>
 
 <script>
 import SnacksHeader from "@/components/SnacksHeader.vue";
-import SnacksHeader2 from "@/components/SnacksHeader2.vue";
-// import CaruseList from "@/components/CaruseList.vue";
+import CaruseList from "@/components/CaruseList.vue";
 
 export default {
   name: 'App',
   components: {
-      SnacksHeader2,
-      // CaruseList,
+      CaruseList,
       SnacksHeader,
   }
 }
@@ -26,6 +23,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

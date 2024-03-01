@@ -23,11 +23,12 @@
         </defs>
     </svg>
 
+
 </template>
 
 <script>
 export default {
-    name: "UAFlag"
+    name: "UKFlag"
 }
 </script>
 
