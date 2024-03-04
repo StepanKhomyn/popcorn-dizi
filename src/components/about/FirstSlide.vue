@@ -75,7 +75,7 @@ export default {
 .person {
     width: 300px;
     height: 390px;
-    background-image: url("@/assets/popcorn/person.png");
+    background-image: url("@/assets/popcorn/person1.png");
     background-size: cover;
     position: absolute;
     bottom: 0;

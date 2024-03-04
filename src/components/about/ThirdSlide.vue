@@ -2,19 +2,18 @@
     <div class="slide">
         <div class="logo">
             <div class="logo-container">
-            <span class="letter">D</span>
-            <span class="letter">I</span>
-            <span class="letter">Z</span>
-            <span class="letter">Z</span>
-            <span class="letter">I</span>
+                <span class="letter">D</span>
+                <span class="letter">I</span>
+                <span class="letter">Z</span>
+                <span class="letter">Z</span>
+                <span class="letter">I</span>
                 <span class="letter">Т</span>
                 <span class="letter">M</span>
-
             </div>
         </div>
         <div class="text-container">
             <span class="text">
-                Головна мета ТОВ «КДМ Продукт» полягає в тому,щоб наші споживачі були задоволені смаком нашої продукції,а також могли бути впевнені,що у виробництві снекової продукції ТМ «Dizzi» ми не використовуємо штучних барвників і консервантів.
+                Головна мета ТОВ «КДМ Продукт» полягає в тому, щоб наші споживачі були задоволені смаком нашої продукції, а також могли бути впевнені, що у виробництві снекової продукції ТМ «Dizzi» ми не використовуємо штучних барвників і консервантів.
             </span>
         </div>
     </div>
@@ -35,9 +34,12 @@ export default {
     overflow: hidden;
     background-size: cover;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
-.text-container{
+
+.text-container {
     display: flex;
     flex-direction: column;
     width: 65%;
@@ -47,9 +49,10 @@ export default {
     font-weight: 400;
     gap: 1.2rem;
     text-align: start;
+    animation: slideInFromBottom 1s forwards;
 }
-.text{
-    /*display: block;*/
+
+.text {
     font-family: "DM Serif Display";
     text-shadow: 0 0 5px rgb(255 255 255);
     font-weight: 400;
@@ -63,13 +66,15 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
+    width: 60%;
     height: 100%;
 }
-.logo-container{
+
+.logo-container {
     position: relative;
-    width: 350px;
+    width: 60%;
 }
+
 .logo-container .letter {
     position: absolute;
     font-family: 'Rouge Script', cursive;
@@ -89,8 +94,8 @@ export default {
 .logo .letter:nth-child(3) { top: -10px; left: 120px; animation: fadeIn 1s forwards 0.3s; }
 .logo .letter:nth-child(4) { top: 0px; left: 190px; animation: fadeIn 1s forwards 0.4s; }
 .logo .letter:nth-child(5) { top: 10px; left: 250px; animation: fadeIn 1s forwards 0.5s; }
-.logo .letter:nth-child(6) {font-size: 40px; top: 70px; left: 110px; animation: fadeIn 1s forwards 0.5s; }
-.logo .letter:nth-child(7) {font-size: 40px; top: 70px; left: 145px; animation: fadeIn 1s forwards 0.5s; }
+.logo .letter:nth-child(6) { font-size: 40px; top: 70px; left: 110px; animation: fadeIn 1s forwards 0.5s; }
+.logo .letter:nth-child(7) { font-size: 40px; top: 70px; left: 145px; animation: fadeIn 1s forwards 0.5s; }
 
 @keyframes fadeIn {
     from {
@@ -100,6 +105,7 @@ export default {
         opacity: 1;
     }
 }
+
 @keyframes slideInFromBottom {
     from {
         opacity: 0;

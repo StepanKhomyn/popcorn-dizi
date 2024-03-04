@@ -1,9 +1,6 @@
 <template>
     <div class="slide">
-        <div class="items">
-            <div class="pack pack-1"></div>
-            <div class="pack pack-2"></div>
-        </div>
+       
         <div class="text-container">
             <span class="text from-right">
                 Наше підприємство успішно співпрацює з найбільшими торгівельними мережами України, а також постачає продукцію на експорт у країни Європи.
@@ -95,7 +92,7 @@ export default {
 
 .items{
     width: 300px;
-    height: 390px;
+    height: 100%;
     position: relative;
 }
 .pack {
@@ -108,7 +105,7 @@ export default {
     background-size: cover;
     background-image: url("@/assets/popcorn/popcorn-pack.png");
     animation: slideInFromBottomLeft 1s forwards;
-
+    bottom: 50px
 }
 .pack-2{
     width: 250px;
@@ -116,6 +113,7 @@ export default {
     background-size: cover;
     background-image: url("@/assets/popcorn/popcorn3.png");
     animation: slideInFromTopRight 1s forwards;
+    right: 130px
 }
 
 @keyframes slideInFromBottomLeft {
