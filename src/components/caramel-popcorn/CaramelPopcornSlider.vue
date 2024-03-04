@@ -2,7 +2,7 @@
     <div class="w-100 pt-3 pb-3">
         <h2 class="fs-2 text-center pb-2">Карамелізований попкорн</h2>
 
-        <Carousel :items-to-show="2.5" :wrap-around="true" :transition="500">
+        <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
 
                 <div class="carousel__item">{{ slide }}</div>
@@ -28,6 +28,10 @@ import {defineComponent} from 'vue'
 import {Carousel, Navigation, Slide} from 'vue3-carousel'
 
 import 'vue3-carousel/dist/carousel.css'
+import caramel_first from "./slider-element/caramel_52.5.png"
+import caramel_second from "./slider-element/caramel_fruit_55.png"
+import caramel_third from "./slider-element/caramel_chocolate_55.png"
+import caramel_fourth from "./slider-element/caramel_dizzi_100.png"
 
 export default defineComponent({
     name: 'CaramelPopcornSlider',
@@ -35,16 +39,25 @@ export default defineComponent({
         return {
             items: [
                 {
-                    name: 'Kin Khao',
-                    background: "@/components/caramel-popcorn/slider-element/caramel_52.5.png",
-                    tag: ["Thai"]
+                    name: 'Попкорн у карамелі Dizzi 52,5 г',
+                    background: caramel_first,
+                    tag: ["52,5 г"]
                 },
-                // {name: 'Jū-Ni', tag: ["Sushi", "Japanese", "$$$$"]},
-                // {name: 'Delfina', tag: ["Pizza", "Casual"]},
-                // {name: 'San Tung', tag: ["Chinese", "$$"]},
-                // {name: 'Anchor Oyster Bar', tag: ["Seafood", "Cioppino"]},
-                // {name: 'Locanda', tag: ["Italian"]},
-                // {name: 'Garden Creamery', tag: ["Ice cream"]},
+                {
+                    name: 'Попкорн у фруктовій карамелі Dizzi 55 г',
+                    background: caramel_second,
+                    tag: ["55 г"]
+                },
+                {
+                    name: 'Попкорн у шоколадній карамелі Dizzi 55 г',
+                    background: caramel_third,
+                    tag: ["55 г"]
+                },
+                {
+                    name: 'Попкорн у карамелі ТМ Dizzi 100 г',
+                    background: caramel_fourth,
+                    tag: ["100 г"]
+                }
             ]
         }
     },
@@ -122,6 +135,8 @@ export default defineComponent({
     border-top-right-radius: 4px;
     transition: opacity 150ms linear;
     user-select: none;
+    height: 320px;
+    /*width: 10rem;*/
 }
 .card-carousel-cards .card-carousel--card img:hover {
     opacity: 0.5;
