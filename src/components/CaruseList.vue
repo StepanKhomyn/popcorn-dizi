@@ -11,11 +11,6 @@
                 <!-- Adjusted image size -->
                 <component :is="slide.component"/>
 
-                <!-- Carousel Caption -->
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>{{ slide.title }}</h5>
-                    <p>{{ slide.description }}</p>
-                </div>
             </div>
         </div>
 
@@ -31,7 +26,9 @@
     </div>
 </template>
 <script>
-import PopcornSlide from "@/components/PopcornSlide.vue";
+import FirstSlide from "@/components/about/FirstSlide.vue";
+import SecondSlide from "@/components/about/SecondSlide.vue";
+import ThirdSlide from "@/components/about/ThirdSlide.vue";
 
 export default {
     name: 'CaruseList',
@@ -39,20 +36,17 @@ export default {
         return {
             slides: [
                 {
-                    image: 'https://via.placeholder.com/800x400',
-                    component: PopcornSlide,
+                    component: FirstSlide,
                     title: 'First slide',
                     description: 'This is the first slide',
                 },
                 {
-                    image: 'https://via.placeholder.com/800x400',
-                    component: PopcornSlide,
+                    component: SecondSlide,
                     title: 'Second slide',
                     description: 'This is the second slide',
                 },
                 {
-                    image: 'https://via.placeholder.com/800x400',
-                    component: PopcornSlide,
+                    component: ThirdSlide,
                     title: 'Third slide',
                     description: 'This is the third slide',
                 },

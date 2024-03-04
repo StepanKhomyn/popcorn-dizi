@@ -1,10 +1,12 @@
 <template>
     <div class="slide">
-        <div class="text-container tracking-in-expand-fwd">
-            <div class="text">
-                Компанія ТОВ «КДМ Продукт» була заснована в 2016 році у місті Червоноград,Львівської області.
-                Ми спеціалізуємося на виготовленні попкорну та кукурудзяних паличок різних смаків  під торгівельною маркою «ТМ Dizzi»,а також під власними марками наших клієнтів.
-            </div>
+        <div class="text-container">
+            <span class="text from-top">
+                Компанія ТОВ «КДМ Продукт» була заснована в 2016 році у місті Червоноград, Львівської області.
+            </span>
+            <span class="text from-bottom">
+            Ми спеціалізуємося на виготовленні попкорну та кукурудзяних паличок різних смаків  під торгівельною маркою «ТМ Dizzi», а також під власними марками наших клієнтів.
+            </span>
         </div>
         <div class="person">
             <div class="popcorn-container">
@@ -19,7 +21,7 @@
 
 <script>
 export default {
-    name: 'PopcornSlide'
+    name: 'FirstSlide'
 }
 </script>
 
@@ -27,18 +29,43 @@ export default {
 
 .slide {
     position: relative;
-    height: 400px;
-    background-image: url("@/assets/fone/fone.jpg");
+    height: 600px;
+    background-image: url("@/assets/fone/about_us_six_bg.jpg");
+    opacity: 0.9;
+    background-size: cover;
     overflow: hidden;
     display: flex;
     justify-content: space-around;
 }
 .text-container{
     display: flex;
-    width: 350px;
+    flex-direction: column;
+    width: 65%;
     height: 100%;
     justify-content: center;
     align-items: center;
+    font-weight: 400;
+    gap: 1.2rem;
+    text-align: start;
+}
+.text{
+    /*display: block;*/
+    font-family: "DM Serif Display";
+    text-shadow: 0 0 5px rgb(255 255 255);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    color: #000000;
+}
+.from-top {
+    opacity: 0;
+    animation: slideInFromTop 1s forwards;
+}
+
+.from-bottom {
+    opacity: 0;
+    animation: slideInFromBottom 1s forwards;
 }
 .tracking-in-expand-fwd {
     -webkit-animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -50,8 +77,9 @@ export default {
     height: 390px;
     background-image: url("@/assets/popcorn/person.png");
     background-size: cover;
-    position: relative;
+    position: absolute;
     bottom: 0;
+    right: 20px;
     z-index: 2;
 }
 
@@ -160,37 +188,35 @@ export default {
         transform: translateY(270px) translateX(5px); /* End at 25px left */
     }
 }
-@-webkit-keyframes tracking-in-expand-fwd {
-    0% {
-        letter-spacing: -0.5em;
-        -webkit-transform: translateZ(-700px);
-        transform: translateZ(-700px);
+
+@keyframes fadeIn {
+    from {
         opacity: 0;
     }
-    40% {
-        opacity: 0.6;
-    }
-    100% {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        opacity: 1;
-    }
-}
-@keyframes tracking-in-expand-fwd {
-    0% {
-        letter-spacing: -0.5em;
-        -webkit-transform: translateZ(-700px);
-        transform: translateZ(-700px);
-        opacity: 0;
-    }
-    40% {
-        opacity: 0.6;
-    }
-    100% {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
+    to {
         opacity: 1;
     }
 }
 
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>

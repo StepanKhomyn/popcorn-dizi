@@ -18,6 +18,9 @@
             <!-- Navigation links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <router-link to="/contact" class="nav-link links">Про нас</router-link>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle links" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Попкорн
@@ -56,7 +59,10 @@ export default {
 <style scoped>
 /* Add any custom styles here */
 .header{
-    border-bottom: 2px solid #2b2f32;
+    /*border-bottom: 2px solid #2b2f32;*/
+}
+.logo img{
+    height: 70px;
 }
 /* Styles for social media icons */
 .social-icons {
