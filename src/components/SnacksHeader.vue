@@ -6,8 +6,7 @@
 
             <!-- Social media icons -->
                         <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/dizzi_snacks?igsh=MWhnMGxzM3U1aTBwbg==" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
                         </div>
 
             <!-- Navigation toggle button -->
@@ -19,26 +18,30 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="contacts" class="nav-link links">Про нас</a>
+                        <a href="#carouselExampleIndicators" class="nav-link links">{{$t('header.about')}}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle links" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Попкорн
+                            {{$t('header.popcorn')}}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-bs-theme="dark">
-                            <li><a href="#caramel-popcorn" class="dropdown-item drp-link">Карамелізований попкорн</a></li>
-                            <li><a href="#ready-popcorn" class="dropdown-item drp-link">Готовий попкорн</a></li>
+                            <li><a href="#caramel-popcorn" class="dropdown-item drp-link">{{$t('header.caramel_pop')}}</a></li>
+                            <li><a href="#ready-popcorn" class="dropdown-item drp-link">{{$t('header.ready_pop')}}</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#corn-snacks" class="nav-link links">Кукурудзяні палички</a>
+                        <a href="#corn-snacks" class="nav-link links">{{$t('header.corns')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="contacts" class="nav-link links">Контакти</a>
+                        <a href="#contacts" class="nav-link links">{{$t('header.contacts')}}</a>
                     </li>
                     <li class="nav-item flags">
-                        <span class="links"><UAFlag class="flag-icons"/>UA</span>
-                        <span class="links"><UKFlag class="flag-icons"/>UK</span>
+                        <span class="links" @click="switchLocale('uk')">
+                          <UAFlag class="flag-icons"/>UA
+                        </span>
+                        <span class="links" @click="switchLocale('en')">
+                          <UKFlag class="flag-icons"/>UK
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -52,7 +55,12 @@ import UAFlag from "@/assets/country/UAFlag.vue";
 
 export default {
     name: "SnacksHeader",
-    components: {UAFlag, UKFlag}
+    components: {UAFlag, UKFlag},
+    methods: {
+        switchLocale(locale) {
+            this.$i18n.locale = locale;
+        }
+    }
 }
 </script>
 

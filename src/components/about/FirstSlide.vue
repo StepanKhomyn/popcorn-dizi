@@ -2,10 +2,10 @@
     <div class="slide">
         <div class="text-container">
             <span class="text from-top">
-                Компанія ТОВ «КДМ Продукт» була заснована в 2016 році у місті Червоноград, Львівської області.
+                {{$t('slider.slide_1_text_1')}}
             </span>
             <span class="text from-bottom">
-            Ми спеціалізуємося на виготовленні попкорну та кукурудзяних паличок різних смаків  під торгівельною маркою «ТМ Dizzi», а також під власними марками наших клієнтів.
+                {{$t('slider.slide_1_text_2')}}
             </span>
         </div>
         <div class="person">

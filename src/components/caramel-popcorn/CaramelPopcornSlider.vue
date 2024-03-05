@@ -1,6 +1,6 @@
 <template>
-    <div class="w-100 pt-3 pb-3" id="caramel-popcorn">
-        <h2 class="fs-2 text-center heading-content">Карамелізований попкорн</h2>
+    <div class="w-100 pt-3 pb-3 mt-1" id="caramel-popcorn">
+        <h2 class="fs-2 text-center heading-content">{{$t('header.caramel_pop')}}</h2>
 
         <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
@@ -10,7 +10,7 @@
                 <div class="card-carousel--card">
                     <img :src="item.background" />
                     <div class="card-carousel--card--footer">
-                        <p class="fs-6">{{ item.name }}</p>
+                        <p class="fs-6">{{ $t(`${item.name}`) }}</p>
                         <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }}</p>
                     </div>
                 </div>
@@ -39,22 +39,22 @@ export default defineComponent({
         return {
             items: [
                 {
-                    name: 'Попкорн у карамелі Dizzi',
+                    name: 'products.caramel_popcorn',
                     background: caramel_first,
                     tag: ["52,5 г"]
                 },
                 {
-                    name: 'Попкорн у фруктовій карамелі Dizzi',
+                    name: 'products.fruit_popcorn',
                     background: caramel_second,
                     tag: ["55 г"]
                 },
                 {
-                    name: 'Попкорн у карамелі ТМ Dizzi',
+                    name: 'products.caramel_popcorn',
                     background: caramel_fourth,
                     tag: ["100 г"]
                 },
                 {
-                    name: 'Попкорн у шоколадній карамелі Dizzi',
+                    name: 'products.chocolate_popcorn',
                     background: caramel_third,
                     tag: ["55 г"]
                 }

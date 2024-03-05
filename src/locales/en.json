@@ -1,0 +1,48 @@
+{
+  "header": {
+    "about": "About us",
+    "popcorn": "Popcorn",
+    "caramel_pop": "Caramel Popcorn",
+    "ready_pop": "Ready Popcorn",
+    "corns": "Corn sticks",
+    "contacts": "Contacts"
+
+  },
+  "slider": {
+    "slide_1_text_1": "KDM Product LLC was founded in 2016 in the city of Chervonograd, Lviv region.",
+    "slide_1_text_2": "We specialize in the production of popcorn and corn sticks of various flavors under the trademark 'TM Dizzi', as well as under our customers' own brands.",
+    "slide_2_text_1": "Our company successfully cooperates with the largest trade networks of Ukraine, and also supplies products for export to European countries.",
+    "slide_2_text_2": "The ISO22000 international food safety system is implemented in our production.",
+    "slide_3_text": "The main goal of LLC 'KDM Product' is for our consumers to be satisfied with the taste of our products, and also to be sure that we do not use artificial dyes and preservatives in the production of 'TM Dizzi' snack products."
+
+  },
+  "form": {
+    "main_address": "Legal Address",
+    "address_main": "KDM PRODUKT LLC, 80100, Ukraine, Lviv Region, Chervonograd, Belzka Street, 8",
+    "working_address": "Manufacturing Address",
+    "address_working": "80100, Ukraine, Lviv Region, Chervonograd, Promyslova Street, 4",
+    "info": "Information Line",
+    "phone": "Tel./f",
+    "social_acc": "Social networks",
+    "name": "Name",
+    "phone_number": "Phone",
+    "text_message": "Message text",
+    "send": "Send",
+    "enter_name": "Please enter a name.",
+    "enter_phone": "Please enter your phone",
+    "enter_text": "Please enter the message text."
+  },
+  "products": {
+    "chocolate_popcorn": "Dizzi Chocolate Caramel Popcorn",
+    "caramel_popcorn": "Dizzi Caramel Popcorn",
+    "fruit_popcorn": "Popcorn in fruit caramel",
+    "super_chees_popcorn": "Popcorn Super Cheese TM Dizzi",
+    "beckon_popcorn": "Popcorn with the taste of TM Dizzi bacon",
+    "salty_popcorn": "Popcorn salty TM Dizzi",
+    "chees_popcorn": "Popcorn with the taste of TM Dizzi cheese",
+    "sweet_popcorn": "Popcorn sweet TM Dizzi",
+    "fruit_mix_popcorn": "Popcorn fruit mix TM Dizzi",
+    "corns_for_boys": "Corn sticks sweet with a surprise for boys TM Dizzi",
+    "corns_for_girls": "Corn sticks sweet with a surprise for girls TM Dizzi"
+  }
+}

@@ -1,6 +1,6 @@
 <template>
     <div class="w-100 pt-3 pb-3" id="corn-snacks">
-        <h2 class="fs-2 text-center heading-content">Кукурудзяні палички</h2>
+        <h2 class="fs-2 text-center heading-content">{{$t('header.corns')}}</h2>
         <Carousel :items-to-show="1" :wrap-around="true">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
 
@@ -9,7 +9,7 @@
                 <div class="card-carousel--card">
                     <img :src="item.background"/>
                     <div class="card-carousel--card--footer">
-                        <p class="fs-6">{{ item.name }}</p>
+                        <p class="fs-6">{{ $t(`${item.name}`) }}</p>
                         <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }}</p>
                     </div>
                 </div>
@@ -35,12 +35,12 @@ export default defineComponent({
         return {
             items: [
                 {
-                    name: 'Кукурудзяні палички солодкі з сюрпризом для хлопчиків ТМ Dizzi',
+                    name: 'products.corns_for_boys',
                     background: first,
                     tag: ["80 г"]
                 },
                 {
-                    name: 'Кукурудзяні палички солодкі з сюрпризом для дівчаток ТМ Dizzi',
+                    name: 'products.corns_for_girls',
                     background: first,
                     tag: ["80 г"]
                 },
