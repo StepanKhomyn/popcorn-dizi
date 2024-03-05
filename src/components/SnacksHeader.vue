@@ -19,22 +19,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <router-link to="/contact" class="nav-link links">Про нас</router-link>
+                        <a href="contacts" class="nav-link links">Про нас</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle links" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Попкорн
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-bs-theme="dark">
-                            <li><router-link to="/caramel-popcorn" class="dropdown-item drp-link">Карамелізований попкорн</router-link></li>
-                            <li><router-link to="/ready-popcorn" class="dropdown-item drp-link">Готовий попкорн</router-link></li>
+                            <li><a href="#caramel-popcorn" class="dropdown-item drp-link">Карамелізований попкорн</a></li>
+                            <li><a href="#ready-popcorn" class="dropdown-item drp-link">Готовий попкорн</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/contact" class="nav-link links">Кукурудзяні палички</router-link>
+                        <a href="#corn-snacks" class="nav-link links">Кукурудзяні палички</a>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/contact" class="nav-link links">Контакти</router-link>
+                        <a href="contacts" class="nav-link links">Контакти</a>
                     </li>
                     <li class="nav-item flags">
                         <span class="links"><UAFlag class="flag-icons"/>UA</span>

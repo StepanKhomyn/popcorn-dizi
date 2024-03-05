@@ -1,5 +1,5 @@
 <template>
-    <div class="w-100 pt-3">
+    <div class="w-100 pt-3" id="ready-popcorn">
         <h2 class="fs-2 text-center heading-content">Готовий попкорн</h2>
         <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">

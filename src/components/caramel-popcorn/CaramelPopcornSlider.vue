@@ -1,5 +1,5 @@
 <template>
-    <div class="w-100 pt-3 pb-3">
+    <div class="w-100 pt-3 pb-3" id="caramel-popcorn">
         <h2 class="fs-2 text-center heading-content">Карамелізований попкорн</h2>
 
         <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
