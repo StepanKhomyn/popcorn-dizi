@@ -30,7 +30,7 @@ export default {
 .slide {
     position: relative;
     height: 600px;
-    background-image: url("@/assets/fone/about_us_first_bg.jpg");
+    background-image: url("@/assets/about_us_first_bg.jpg");
     overflow: hidden;
     background-size: cover;
     display: flex;

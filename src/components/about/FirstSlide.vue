@@ -30,7 +30,7 @@ export default {
 .slide {
     position: relative;
     height: 600px;
-    background-image: url("@/assets/fone/about_us_six_bg.jpg");
+    background-image: url("@/assets/about_us_six_bg.jpg");
     opacity: 0.9;
     background-size: cover;
     overflow: hidden;
@@ -75,7 +75,7 @@ export default {
 .person {
     width: 300px;
     height: 390px;
-    background-image: url("@/assets/popcorn/person1.png");
+    background-image: url("@/assets/person1.png");
     background-size: cover;
     position: absolute;
     bottom: 0;
@@ -97,7 +97,7 @@ export default {
 .one-pop {
     width: 50px;
     height: 50px;
-    background-image: url("@/assets/popcorn/one-popcorn.png");
+    background-image: url("@/assets/one-popcorn.png");
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
