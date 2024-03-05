@@ -1,7 +1,7 @@
 <template>
-    <div class="w-100 pt-3 pb-3">
-        <h2 class="fs-2 text-center pb-2">Готовий попкорн</h2>
-        <Carousel :items-to-show="3" :wrap-around="true">
+    <div class="w-100 pt-3">
+        <h2 class="fs-2 text-center heading-content">Готовий попкорн</h2>
+        <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
 
                 <div class="carousel__item">{{ slide }}</div>
@@ -9,7 +9,7 @@
                 <div class="card-carousel--card">
                     <img :src="item.background"  />
                     <div class="card-carousel--card--footer">
-                        <p>{{ item.name }}</p>
+                        <p class="fs-6">{{ item.name }}</p>
                         <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }}</p>
                     </div>
                 </div>
@@ -31,6 +31,7 @@ import 'vue3-carousel/dist/carousel.css'
 import first from "./slider-element/super_cheeze_70.png"
 import second from "./slider-element/salted_70.png"
 import third from "./slider-element/cheeze_70.png"
+import fourth from "./slider-element/backon_70.png"
 
 export default defineComponent({
     name: 'ReadyPopcornSlider',
@@ -38,25 +39,25 @@ export default defineComponent({
         return {
             items: [
                 {
-                    name: 'Попкорн у карамелі Dizzi 52,5 г',
+                    name: 'Попкорн СуперСир ТМ Dizzi',
                     background: first,
-                    tag: ["52,5 г"]
+                    tag: ["70 г"]
                 },
                 {
-                    name: 'Попкорн у фруктовій карамелі Dizzi 55 г',
+                    name: 'Попкорн  солоний ТМ Dizzi',
                     background: second,
-                    tag: ["55 г"]
+                    tag: ["70 г"]
                 },
                 {
-                    name: 'Попкорн у шоколадній карамелі Dizzi 55 г',
+                    name: 'Попкорн зі смаком сиру TM Dizzi',
                     background: third,
-                    tag: ["55 г"]
+                    tag: ["70 г"]
                 },
-                // {
-                //     name: 'Попкорн у карамелі ТМ Dizzi 100 г',
-                //     background: caramel_fourth,
-                //     tag: ["100 г"]
-                // }
+                {
+                    name: 'Попкорн зі смаком бекону ТМ Dizzi',
+                    background: fourth,
+                    tag: ["70 г"]
+                }
             ]
         }
     },
@@ -68,7 +69,56 @@ export default defineComponent({
 })
 </script>
 <style scoped>
+.heading-content {
+    font-family: Roboto, sans-serif;
+}
+.fs-6 {
+    font-size: 0.85rem!important;
+     font-family: Roboto, sans-serif;
+}
+.carousel {
+    margin: 10px 0
+}
+.carousel__slide {
+    padding: 10px;
+    margin: 10px 0;
+}
 
+.carousel__viewport {
+    perspective: 2000px;
+}
+
+.carousel__track {
+    transform-style: preserve-3d;
+}
+
+.carousel__slide--sliding {
+    transition: 0.5s;
+}
+
+.carousel__slide {
+    opacity: 0.9;
+    transform: rotateY(-20deg) scale(0.9);
+}
+
+.carousel__slide--active ~ .carousel__slide {
+    transform: rotateY(20deg) scale(0.9);
+}
+
+.carousel__slide--prev {
+    opacity: 1;
+    transform: rotateY(-10deg) scale(0.95);
+}
+
+.carousel__slide--next {
+    opacity: 1;
+    transform: rotateY(10deg) scale(0.95);
+}
+
+.carousel__slide--active {
+    opacity: 1;
+    transform: rotateY(0) scale(1.1);
+}
 
 .card-carousel-cards .card-carousel--card {
     margin: 0 10px;
@@ -91,8 +141,8 @@ export default defineComponent({
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     transition: opacity 150ms linear;
-    height: 320px;
     user-select: none;
+    height: 12rem;
 }
 .card-carousel-cards .card-carousel--card img:hover {
     opacity: 0.5;
@@ -152,11 +202,4 @@ export default defineComponent({
     box-shadow: 0px 0px 0px #004977;
 }
 
-h1 {
-    font-size: 3.6em;
-    font-weight: 100;
-    text-align: center;
-    margin-bottom: 0;
-    color: #42b883;
-}
 </style>

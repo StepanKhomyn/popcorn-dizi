@@ -1,6 +1,6 @@
 <template>
     <div class="w-100 pt-3 pb-3">
-        <h2 class="fs-2 text-center pb-2">Карамелізований попкорн</h2>
+        <h2 class="fs-2 text-center heading-content">Карамелізований попкорн</h2>
 
         <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
@@ -10,7 +10,7 @@
                 <div class="card-carousel--card">
                     <img :src="item.background" />
                     <div class="card-carousel--card--footer">
-                        <p>{{ item.name }}</p>
+                        <p class="fs-6">{{ item.name }}</p>
                         <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }}</p>
                     </div>
                 </div>
@@ -39,24 +39,24 @@ export default defineComponent({
         return {
             items: [
                 {
-                    name: 'Попкорн у карамелі Dizzi 52,5 г',
+                    name: 'Попкорн у карамелі Dizzi',
                     background: caramel_first,
                     tag: ["52,5 г"]
                 },
                 {
-                    name: 'Попкорн у фруктовій карамелі Dizzi 55 г',
+                    name: 'Попкорн у фруктовій карамелі Dizzi',
                     background: caramel_second,
                     tag: ["55 г"]
                 },
                 {
-                    name: 'Попкорн у шоколадній карамелі Dizzi 55 г',
-                    background: caramel_third,
-                    tag: ["55 г"]
-                },
-                {
-                    name: 'Попкорн у карамелі ТМ Dizzi 100 г',
+                    name: 'Попкорн у карамелі ТМ Dizzi',
                     background: caramel_fourth,
                     tag: ["100 г"]
+                },
+                {
+                    name: 'Попкорн у шоколадній карамелі Dizzi',
+                    background: caramel_third,
+                    tag: ["55 г"]
                 }
             ]
         }
@@ -69,12 +69,19 @@ export default defineComponent({
 })
 </script>
 <style scoped>
+.heading-content {
+    font-family: Roboto, sans-serif;
+}
+.fs-6 {
+    font-size: 0.85rem!important;
+     font-family: Roboto, sans-serif;
+}
 .carousel {
-    margin: 20px 0
+    margin: 10px 0
 }
 .carousel__slide {
     padding: 10px;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .carousel__viewport {
@@ -135,8 +142,7 @@ export default defineComponent({
     border-top-right-radius: 4px;
     transition: opacity 150ms linear;
     user-select: none;
-    height: 320px;
-    /*width: 10rem;*/
+    height: 200px;
 }
 .card-carousel-cards .card-carousel--card img:hover {
     opacity: 0.5;
@@ -196,11 +202,4 @@ export default defineComponent({
     box-shadow: 0px 0px 0px #004977;
 }
 
-h1 {
-    font-size: 3.6em;
-    font-weight: 100;
-    text-align: center;
-    margin-bottom: 0;
-    color: #42b883;
-}
 </style>
