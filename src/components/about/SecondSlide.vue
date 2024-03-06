@@ -9,6 +9,15 @@
                 {{$t('slider.slide_2_text_2')}}
             </span>
         </div>
+
+        <div class="person">
+            <div class="popcorn-container">
+                <div class="popcorn-container2">
+                    <div class="one-pop" v-for="(index, key) in 6" :key="key"></div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </template>
 
@@ -32,7 +41,7 @@ export default {
 .text-container{
     display: flex;
     flex-direction: column;
-    width: 65%;
+    width: 68%;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -58,7 +67,158 @@ export default {
     opacity: 0;
     animation: slideInFromLeft 1s forwards;
 }
+.person {
+    width: 300px;
+    height: 390px;
+    background-image: url("@/assets/person1.png");
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    z-index: 2;
+}
 
+.logo-container {
+    position: relative;
+    width: 60%;
+}
+
+.logo-container .letter {
+    position: absolute;
+    font-family: 'Rouge Script', cursive;
+    font-size: 90px;
+    font-weight: bold;
+    color: #fafafa;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    opacity: 0;
+}
+.popcorn-container {
+    position: absolute;
+    bottom: 255px; /* Adjust the bottom position */
+    transform: translateX(-50%);
+}
+
+.popcorn-container2 {
+    position: relative;
+    height: 260px;
+}
+
+.one-pop {
+    width: 50px;
+    height: 50px;
+    background-image: url("@/assets/one-popcorn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    animation: popAnimation 1.5s forwards;
+}
+
+.one-pop:nth-child(1) {
+    animation-delay: 0.3s;
+    animation: popAnimation1 1s forwards;
+}
+
+.one-pop:nth-child(2) {
+    animation-delay: 0.5s;
+    animation: popAnimation2 0.5s forwards;
+}
+
+.one-pop:nth-child(3) {
+    animation-delay: 0.4s;
+    animation: popAnimation3 2s forwards;
+}
+
+.one-pop:nth-child(4) {
+    animation-delay: 0.6s;
+    animation: popAnimation4 1.5s forwards;
+}
+
+.one-pop:nth-child(5) {
+    animation-delay: 0.7s;
+    animation: popAnimation5 1s forwards;
+}
+
+.one-pop:nth-child(6) {
+    animation-delay: 0.3s;
+    animation: popAnimation6 0.5s forwards;
+}
+
+@keyframes popAnimation1 {
+    0% {
+        transform: translateY(0px) translateX(0px); /* Start at 0px left */
+    }
+    100% {
+        transform: translateY(266px) translateX(-45px); /* End at 10px left */
+    }
+}
+
+@keyframes popAnimation2 {
+    0% {
+        transform: translateY(0px) translateX(0px); /* Start at 0px left */
+    }
+    100% {
+        transform: translateY(256px) translateX(-17px); /* End at 15px left */
+    }
+}
+
+@keyframes popAnimation3 {
+    0% {
+        transform: translateY(0px) translateX(0px); /* Start at 0px left */
+    }
+    100% {
+        transform: translateY(275px) translateX(49px); /* End at 20px left */
+    }
+}
+
+@keyframes popAnimation4 {
+    0% {
+        transform: translateY(0px) translateX(0px); /* Start at 0px left */
+    }
+    100% {
+        transform: translateY(245px) translateX(25px); /* End at 25px left */
+    }
+}
+
+@keyframes popAnimation5 {
+    0% {
+        transform: translateY(0px) translateX(0px); /* Start at 0px left */
+    }
+    100% {
+        transform: translateY(255px) translateX(80px); /* End at 100px left */
+    }
+}
+
+@keyframes popAnimation6 {
+    0% {
+        transform: translateY(0px) translateX(0px); /* Start at 0px left */
+    }
+    100% {
+        transform: translateY(270px) translateX(5px); /* End at 25px left */
+    }
+}
+@media (max-width: 1250px) {
+    .text {
+        font-size: 1.6rem;
+    }
+    .person {
+        width: 200px!important;
+        height: 290px!important;
+    }
+}
+@media (max-width: 600px) {
+    .text {
+        font-size: 1.3rem;
+    }
+    .person {
+        width: 160px!important;
+        height: 240px!important;
+    }
+}
 @keyframes fadeIn {
     from {
         opacity: 0;

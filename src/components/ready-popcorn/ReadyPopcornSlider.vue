@@ -1,7 +1,8 @@
 <template>
     <div class="w-100 pt-3" id="ready-popcorn">
         <h2 class="fs-2 text-center heading-content">{{$t('header.ready_pop')}}</h2>
-        <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
+
+        <Carousel :items-to-show="windowWidth > 900 ? 3: windowWidth > 400 ? 1.5: 1" :wrap-around="true" :transition="500">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
 
                 <div class="carousel__item">{{ slide }}</div>
@@ -32,11 +33,14 @@ import first from "./slider-element/super_cheeze_70.png"
 import second from "./slider-element/salted_70.png"
 import third from "./slider-element/cheeze_70.png"
 import fourth from "./slider-element/backon_70.png"
-
+import fifth from "./slider-element/20_g_sweet.png"
+import sixth from "./slider-element/20_g_salted.png"
+import seventh from "./slider-element/20_g_backon.png"
 export default defineComponent({
     name: 'ReadyPopcornSlider',
     data() {
         return {
+            windowWidth: window.innerWidth,
             items: [
                 {
                     name: 'products.super_chees_popcorn',
@@ -57,6 +61,21 @@ export default defineComponent({
                     name: 'products.beckon_popcorn',
                     background: fourth,
                     tag: ["70 г"]
+                },
+                {
+                    name: 'products.sweet_popcorn',
+                    background: fifth,
+                    tag: ["20 г"]
+                },
+                {
+                    name: 'products.salty_popcorn',
+                    background: sixth,
+                    tag: ["20 г"]
+                },
+                {
+                    name: 'products.beckon_popcorn',
+                    background: seventh,
+                    tag: ["20 г"]
                 }
             ]
         }
@@ -66,6 +85,12 @@ export default defineComponent({
         Slide,
         Navigation,
     },
+    mounted() {
+        window.addEventListener('resize', () => {this.windowWidth = window.innerWidth} )
+    },
+    unmounted() {
+        window.removeEventListener('resize', () => {this.windowWidth = window.innerWidth})
+    }
 })
 </script>
 <style scoped>

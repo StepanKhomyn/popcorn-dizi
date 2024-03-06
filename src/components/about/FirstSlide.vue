@@ -40,8 +40,8 @@ export default {
 .text-container{
     display: flex;
     flex-direction: column;
-    width: 65%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     justify-content: center;
     align-items: center;
     font-weight: 400;
@@ -49,14 +49,31 @@ export default {
     text-align: start;
 }
 .text{
-    /*display: block;*/
     font-family: "DM Serif Display";
     text-shadow: 0 0 5px rgb(255 255 255);
     font-weight: 400;
     letter-spacing: 0;
-    font-size: 2.4rem;
+    font-size: 2rem;
     line-height: 1.1;
     color: #000000;
+}
+@media (max-width: 1250px) {
+    .text {
+        font-size: 1.6rem;
+    }
+    .person {
+        width: 200px!important;
+        height: 290px!important;
+    }
+}
+@media (max-width: 600px) {
+    .text {
+        font-size: 1.3rem;
+    }
+    .person {
+        width: 160px!important;
+        height: 240px!important;
+    }
 }
 .from-top {
     opacity: 0;

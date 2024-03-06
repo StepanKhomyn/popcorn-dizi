@@ -127,7 +127,7 @@ export default {
     background-color: #343a40;
     padding: 20px;
     margin-top: 20px;
-    height: 100vh;
+    height: max-content;
 }
 
 .text-light {

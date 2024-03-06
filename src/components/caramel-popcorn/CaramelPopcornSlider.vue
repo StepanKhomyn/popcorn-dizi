@@ -2,7 +2,7 @@
     <div class="w-100 pt-3 pb-3 mt-1" id="caramel-popcorn">
         <h2 class="fs-2 text-center heading-content">{{$t('header.caramel_pop')}}</h2>
 
-        <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
+        <Carousel :items-to-show="windowWidth > 900 ? 3: windowWidth > 400 ? 1.5: 1" :wrap-around="true" :transition="500">
             <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
 
                 <div class="carousel__item">{{ slide }}</div>
@@ -37,6 +37,7 @@ export default defineComponent({
     name: 'CaramelPopcornSlider',
     data() {
         return {
+            windowWidth: window.innerWidth,
             items: [
                 {
                     name: 'products.caramel_popcorn',
@@ -66,6 +67,13 @@ export default defineComponent({
         Slide,
         Navigation,
     },
+
+    mounted() {
+        window.addEventListener('resize', () => {this.windowWidth = window.innerWidth} )
+    },
+    unmounted() {
+        window.removeEventListener('resize', () => {this.windowWidth = window.innerWidth})
+    }
 })
 </script>
 <style scoped>
