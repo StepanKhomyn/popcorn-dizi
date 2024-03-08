@@ -33,9 +33,9 @@
     "enter_text": "Будь ласка, введіть текст повідомлення."
   },
   "products": {
-    "chocolate_popcorn": "Попкорн у шоколадній карамелі Dizzi",
-    "caramel_popcorn": "Попкорн у карамелі Dizzi",
-    "fruit_popcorn": "Попкорн у фруктовій карамелі",
+    "chocolate_popcorn": "Попкорн у шоколадній карамелі TM Dizzi",
+    "caramel_popcorn": "Попкорн у карамелі TM Dizzi",
+    "fruit_popcorn": "Попкорн у фруктовій карамелі ТМ Dizzi",
     "super_chees_popcorn": "Попкорн СуперСир ТМ Dizzi",
     "beckon_popcorn": "Попкорн зі смаком бекону ТМ Dizzi",
     "salty_popcorn": "Попкорн  солоний ТМ Dizzi",
@@ -43,6 +43,7 @@
     "sweet_popcorn": "Попкорн  солодкий ТМ Dizzi",
     "fruit_mix_popcorn": "Попкорн  фруктовий мікс ТМ Dizzi",
     "corns_for_boys": "Кукурудзяні палички солодкі з сюрпризом для хлопчиків ТМ Dizzi",
-    "corns_for_girls": "Кукурудзяні палички солодкі з сюрпризом для дівчаток ТМ Dizzi"
+    "corns_for_girls": "Кукурудзяні палички солодкі з сюрпризом для дівчаток ТМ Dizzi",
+    "gram": "г"
   }
 }

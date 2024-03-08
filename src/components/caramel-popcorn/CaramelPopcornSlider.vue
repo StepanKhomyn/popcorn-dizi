@@ -11,7 +11,7 @@
                     <img :src="item.background" />
                     <div class="card-carousel--card--footer">
                         <p class="fs-6">{{ $t(`${item.name}`) }}</p>
-                        <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }}</p>
+                        <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }} {{$t('products.gram')}}</p>
                     </div>
                 </div>
             </Slide>
@@ -42,22 +42,22 @@ export default defineComponent({
                 {
                     name: 'products.caramel_popcorn',
                     background: caramel_first,
-                    tag: ["52,5 г"]
+                    tag: ["52,5"]
                 },
                 {
                     name: 'products.fruit_popcorn',
                     background: caramel_second,
-                    tag: ["55 г"]
+                    tag: ["55"]
                 },
                 {
                     name: 'products.caramel_popcorn',
                     background: caramel_fourth,
-                    tag: ["100 г"]
+                    tag: ["100"]
                 },
                 {
                     name: 'products.chocolate_popcorn',
                     background: caramel_third,
-                    tag: ["55 г"]
+                    tag: ["55"]
                 }
             ]
         }

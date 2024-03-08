@@ -11,7 +11,7 @@
                     <img :src="item.background"  />
                     <div class="card-carousel--card--footer">
                         <p class="fs-6">{{ $t(`${item.name}`) }}</p>
-                        <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }}</p>
+                        <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }} {{$t('products.gram')}}</p>
                     </div>
                 </div>
             </Slide>
@@ -36,6 +36,8 @@ import fourth from "./slider-element/backon_70.png"
 import fifth from "./slider-element/20_g_sweet.png"
 import sixth from "./slider-element/20_g_salted.png"
 import seventh from "./slider-element/20_g_backon.png"
+import eight from "./slider-element/20_g_chees.png"
+
 export default defineComponent({
     name: 'ReadyPopcornSlider',
     data() {
@@ -45,37 +47,42 @@ export default defineComponent({
                 {
                     name: 'products.super_chees_popcorn',
                     background: first,
-                    tag: ["70 г"]
+                    tag: ["70"]
                 },
                 {
                     name: 'products.salty_popcorn',
                     background: second,
-                    tag: ["70 г"]
+                    tag: ["70"]
                 },
                 {
                     name: 'products.chees_popcorn',
                     background: third,
-                    tag: ["70 г"]
+                    tag: ['70']
                 },
                 {
                     name: 'products.beckon_popcorn',
                     background: fourth,
-                    tag: ["70 г"]
+                    tag: ["70"]
                 },
                 {
                     name: 'products.sweet_popcorn',
                     background: fifth,
-                    tag: ["20 г"]
+                    tag: ["20"]
                 },
                 {
                     name: 'products.salty_popcorn',
                     background: sixth,
-                    tag: ["20 г"]
+                    tag: ["20"]
                 },
                 {
                     name: 'products.beckon_popcorn',
                     background: seventh,
-                    tag: ["20 г"]
+                    tag: ["20"]
+                },
+                {
+                    name: 'products.chees_popcorn',
+                    background: eight,
+                    tag: ["20"]
                 }
             ]
         }

@@ -10,11 +10,10 @@
                     <img :src="item.background"/>
                     <div class="card-carousel--card--footer">
                         <p class="fs-6">{{ $t(`${item.name}`) }}</p>
-                        <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }}</p>
+                        <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }} {{$t('products.gram')}}</p>
                     </div>
                 </div>
             </Slide>
-
             <template #addons>
                 <Navigation />
             </template>
@@ -37,12 +36,12 @@ export default defineComponent({
                 {
                     name: 'products.corns_for_boys',
                     background: first,
-                    tag: ["80 г"]
+                    tag: ["80"]
                 },
                 {
                     name: 'products.corns_for_girls',
                     background: first,
-                    tag: ["80 г"]
+                    tag: ["80"]
                 },
             ]
         }

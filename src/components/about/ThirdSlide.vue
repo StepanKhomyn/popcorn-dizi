@@ -2,11 +2,6 @@
     <div class="slide">
         <div class="logo">
             <div class="logo-container">
-                <span class="letter">D</span>
-                <span class="letter">I</span>
-                <span class="letter">Z</span>
-                <span class="letter">Z</span>
-                <span class="letter">I</span>
             </div>
         </div>
         <div class="text-container">
@@ -76,6 +71,15 @@ export default {
     width: 80%;
     height: 100%;
 }
+
+.logo-container {
+    position: relative;
+    width: 290px;
+    height: 120px;
+    background-image: url("@/assets/dizi-logo-without-text.png");
+    background-size: cover;
+}
+
 .person {
     width: 300px;
     height: 390px;
@@ -85,12 +89,6 @@ export default {
     bottom: 0;
     z-index: 2;
 }
-
-.logo-container {
-    position: relative;
-    width: 40%;
-}
-
 .logo-container .letter {
     position: absolute;
     font-family: "DM Serif Display";

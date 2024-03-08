@@ -1,5 +1,10 @@
 <template>
     <div class="slide">
+        <div class="logo">
+            <div class="logo-container">
+            </div>
+        </div>
+
         <div class="text-container">
             <span class="text from-top">
                 {{$t('slider.slide_1_text_1')}}
@@ -32,34 +37,57 @@ export default {
     height: 600px;
     background-image: url("@/assets/about_us_six_bg.jpg");
     opacity: 0.9;
-    background-size: cover;
     overflow: hidden;
-    display: flex;
-    justify-content: space-around;
-}
-.text-container{
+    background-size: cover;
     display: flex;
     flex-direction: column;
-    width: 80%;
-    height: 80%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    justify-content: center;
     font-weight: 400;
     gap: 1.2rem;
     text-align: start;
+    animation: slideInFromBottom 1s forwards;
 }
-.text{
+
+.text {
     font-family: "DM Serif Display";
     text-shadow: 0 0 5px rgb(255 255 255);
     font-weight: 400;
     letter-spacing: 0;
-    font-size: 2rem;
+    font-size: 1.7rem;
     line-height: 1.1;
     color: #000000;
+    width: 50%;
 }
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
+
+.logo-container {
+    position: relative;
+    width: 290px;
+    height: 120px;
+    background-image: url("@/assets/dizi-logo-without-text.png");
+    background-size: cover;
+}
+
 @media (max-width: 1250px) {
     .text {
         font-size: 1.6rem;
+        margin-bottom: 1.2rem;
     }
     .person {
         width: 200px!important;
@@ -68,7 +96,7 @@ export default {
 }
 @media (max-width: 600px) {
     .text {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     .person {
         width: 160px!important;

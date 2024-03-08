@@ -7,7 +7,7 @@
 
         <!-- Carousel Inner -->
         <div class="carousel-inner">
-            <div v-for="(slide, index) in slides" :key="index" class="carousel-item" :class="{ active: index === 0 }">
+            <div v-for="(slide, index) in slides" :key="index" class="carousel-item" :class="{ active: index === 0 }" data-bs-interval="15000">
                 <!-- Adjusted image size -->
                 <component :is="slide.component"/>
 
