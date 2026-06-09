@@ -46,6 +46,8 @@
     "message_placeholder": "Your message…"
   },
   "products": {
+    "group_qty": "Units per case",
+    "pcs": "pcs",
     "chocolate_popcorn": "Chocolate caramelized popcorn TM Dizzi",
     "caramel_popcorn": "Caramelized popcorn TM Dizzi",
     "caramel_popcorn_150": "Caramelized popcorn TM Dizzi",

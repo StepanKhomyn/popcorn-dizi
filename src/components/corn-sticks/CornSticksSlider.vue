@@ -1,132 +1,210 @@
 <template>
-    <div class="w-100 pt-3 pb-3" id="corn-snacks">
-        <h2 class="fs-2 text-center heading-content">{{$t('header.corns')}}</h2>
-        <Carousel :items-to-show="1" :wrap-around="true">
-            <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
-
-                <div class="carousel__item">{{ slide }}</div>
-
-                <div class="card-carousel--card">
-                    <img :src="item.background"/>
-                    <div class="card-carousel--card--footer">
-                        <p class="fs-6">{{ $t(`${item.name}`) }}</p>
-                        <p class="tag" v-for="(tag, index) in item.tag" :key="index" :class="index &gt; 0 ? 'secondary' : ''">{{ tag }} {{$t('products.gram')}}</p>
-                    </div>
-                </div>
-            </Slide>
-            <template #addons>
-                <Navigation />
-            </template>
-        </Carousel>
-    </div>
+  <div class="w-100 pt-3 pb-3" id="corn-snacks">
+    <h2 class="fs-2 text-center heading-content">{{ $t('header.corns') }}</h2>
+    <Carousel :items-to-show="itemsToShow" :wrap-around="true" :transition="500">
+      <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
+        <div class="card-carousel--card">
+          <div class="card-img-wrap">
+            <img :src="item.background" :alt="$t(item.name)" />
+          </div>
+          <div class="card-carousel--card--footer">
+            <p class="product-name">{{ $t(item.name) }}</p>
+            <div class="tags-row">
+              <span class="tag" v-for="(tag, tagIndex) in item.tag" :key="tagIndex">
+                {{ tag }} {{ $t('products.gram') }}
+              </span>
+            </div>
+            <p class="qty-info">
+              {{ $t('products.group_qty') }}: <strong>{{ item.qty }}</strong> {{ $t('products.pcs') }}
+            </p>
+          </div>
+        </div>
+      </Slide>
+      <template #addons>
+        <Navigation />
+      </template>
+    </Carousel>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import { Carousel, Navigation, Slide } from 'vue3-carousel'
-import first from "./slider-element/corn_girl_boy.png"
+  import { defineComponent } from 'vue'
+  import { Carousel, Navigation, Slide } from 'vue3-carousel'
+  import 'vue3-carousel/dist/carousel.css'
+  import first from "./slider-element/corn_girl_boy.png"
 
-import 'vue3-carousel/dist/carousel.css'
-
-export default defineComponent({
+  export default defineComponent({
     name: 'CornSticksSlider',
+    components: { Carousel, Slide, Navigation },
     data() {
-        return {
-            items: [
-                {
-                    name: 'products.corns_for_boys',
-                    background: first,
-                    tag: ["80"]
-                },
-                {
-                    name: 'products.corns_for_girls',
-                    background: first,
-                    tag: ["80"]
-                },
-            ]
-        }
+      return {
+        windowWidth: window.innerWidth,
+        items: [
+          { name: 'products.corns_for_boys',  background: first, tag: ['80'], qty: 20 },
+          { name: 'products.corns_for_girls', background: first, tag: ['80'], qty: 20 },
+        ],
+      }
     },
-    components: {
-        Carousel,
-        Slide,
-        Navigation,
+    computed: {
+      itemsToShow() {
+        // тільки один елемент — завжди по центру
+        return 1
+      },
     },
-})
+    mounted() {
+      window.addEventListener('resize', this.onResize)
+    },
+    beforeUnmount() {
+      window.removeEventListener('resize', this.onResize)
+    },
+    methods: {
+      onResize() { this.windowWidth = window.innerWidth },
+    },
+  })
 </script>
+
 <style scoped>
+.heading-content {
+  font-family: 'Nunito', Roboto, sans-serif;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
 
+/* ── Carousel: немає overflow щоб не розширювати сторінку ── */
+.carousel {
+  margin: 16px auto 24px;
+  padding: 16px 0 24px;
+  max-width: 480px;   /* один слайд — обмежена ширина */
+}
 
-.card-carousel-cards .card-carousel--card {
-    margin: 0 10px;
-    cursor: pointer;
-    background-color: #fff;
-    z-index: 3;
-    margin-bottom: 2px;
-    width: 100%
+.carousel__slide {
+  padding: 8px 12px;
 }
-.card-carousel-cards .card-carousel--card:first-child {
-    margin-left: 0;
+
+/* Прибираємо perspective — головна причина горизонтального скролу */
+:deep(.carousel__viewport) {
+  overflow: hidden;   /* НЕ visible — щоб не виходило за межі */
 }
-.card-carousel-cards .card-carousel--card:last-child {
-    margin-right: 0;
+
+.carousel__slide {
+  opacity: 0.85;
+  transform: scale(0.95);
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
-.card-carousel-cards .card-carousel--card img {
-    vertical-align: bottom;
-    transition: opacity 150ms linear;
-    height: 12rem;
-    user-select: none;
+
+.carousel__slide--active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
 }
-.card-carousel-cards .card-carousel--card img:hover {
-    opacity: 0.5;
+
+/* ── Card ── */
+.card-carousel--card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 100%;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
 }
-.card-carousel-cards .card-carousel--card--footer {
-    border-top: 0;
-    padding: 7px 15px;
+.card-carousel--card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
 }
-.card-carousel-cards .card-carousel--card--footer p {
-    padding: 3px 0;
-    margin: 0;
-    margin-bottom: 2px;
-    font-size: 19px;
-    font-weight: 500;
-    color: #2c3e50;
-    user-select: none;
+
+/* ── Image ── */
+.card-img-wrap {
+  width: 100%;
+  height: 260px;
+  background: #f9f7f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
-.card-carousel-cards .card-carousel--card--footer p.tag {
-    font-size: 11px;
-    font-weight: 300;
-    padding: 4px;
-    background: rgba(40, 44, 53, 0.06);
-    display: inline-block;
-    position: relative;
-    margin-left: 4px;
-    color: #666a73;
+.card-img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  transition: transform 0.25s ease;
 }
-.card-carousel-cards .card-carousel--card--footer p.tag:before {
-    content: "";
-    float: left;
-    position: absolute;
-    top: 0;
-    left: -12px;
-    width: 0;
-    height: 0;
+.card-carousel--card:hover .card-img-wrap img {
+  transform: scale(1.04);
 }
-.card-carousel-cards .card-carousel--card--footer p.tag.secondary {
-    margin-left: 0;
+
+/* ── Footer ── */
+.card-carousel--card--footer {
+  padding: 14px 18px 16px;
+  border-top: 1px solid #f0ede6;
+  text-align: center;
 }
-.card-carousel-cards .card-carousel--card--footer p.tag.secondary:before {
-    display: none !important;
+
+.product-name {
+  font-family: 'Nunito', Roboto, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+  line-height: 1.35;
 }
-.card-carousel-cards .card-carousel--card--footer p.tag:after {
-    content: "";
-    position: absolute;
-    top: 8px;
-    left: -3px;
-    float: left;
-    width: 4px;
-    height: 4px;
-    border-radius: 2px;
-    background: white;
-    box-shadow: 0px 0px 0px #004977;
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #7a6000;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+.qty-info {
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px dashed #e8e4db;
+  line-height: 1.4;
+}
+.qty-info strong {
+  color: #1a1a2e;
+}
+
+/* ── Nav buttons ── */
+:deep(.carousel__prev),
+:deep(.carousel__next) {
+  background: #FFD700;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #1a1a2e;
+  box-shadow: 0 2px 12px rgba(255, 215, 0, 0.4);
+  transition: background 0.2s, transform 0.15s;
+}
+:deep(.carousel__prev:hover),
+:deep(.carousel__next:hover) {
+  background: #ffbe00;
+  //transform: scale(1.08);
+}
+
+@media (max-width: 576px) {
+  .carousel { max-width: 100%; }
+  .card-img-wrap { height: 200px; }
 }
 </style>

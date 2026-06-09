@@ -46,6 +46,8 @@
     "message_placeholder": "Ваше повідомлення…"
   },
   "products": {
+    "group_qty": "Кількість у груповій упаковці",
+    "pcs": "шт",
     "chocolate_popcorn": "Попкорн у шоколадній карамелі ТМ Dizzi",
     "caramel_popcorn": "Попкорн у карамелі ТМ Dizzi",
     "caramel_popcorn_150": "Попкорн у карамелі ТМ Dizzi",

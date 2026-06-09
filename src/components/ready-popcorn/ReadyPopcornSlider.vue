@@ -8,19 +8,16 @@
             <img :src="item.background" :alt="$t(item.name)" />
           </div>
           <div class="card-carousel--card--footer">
-            <p class="product-name">{{ $t(`${item.name}`) }}</p>
+            <p class="product-name">{{ $t(item.name) }}</p>
             <div class="tags-row">
-              <span
-                  class="tag"
-                  v-for="(tag, tagIndex) in item.tag"
-                  :key="tagIndex"
-                  :class="tagIndex > 0 ? 'secondary' : ''"
-              >{{ tag }}</span>
+              <span class="tag" v-for="(tag, tagIndex) in item.tag" :key="tagIndex">{{ tag }}</span>
             </div>
+            <p class="qty-info">
+              {{ $t('products.group_qty') }}: <strong>{{ item.qty }}</strong> {{ $t('products.pcs') }}
+            </p>
           </div>
         </div>
       </Slide>
-
       <template #addons>
         <Navigation />
       </template>
@@ -44,18 +41,19 @@
 
   export default defineComponent({
     name: 'ReadyPopcornSlider',
+    components: { Carousel, Slide, Navigation },
     data() {
       return {
         windowWidth: window.innerWidth,
         items: [
-          { name: 'products.item1', background: img1, tag: ['70 г'] },
-          { name: 'products.item2', background: img2, tag: ['20 г'] },
-          { name: 'products.item3', background: img3, tag: ['20 г'] },
-          { name: 'products.item4', background: img4, tag: ['20 г'] },
-          { name: 'products.item5', background: img5, tag: ['20 г'] },
-          { name: 'products.item6', background: img6, tag: ['70 г'] },
-          { name: 'products.item7', background: img7, tag: ['70 г'] },
-          { name: 'products.item8', background: img8, tag: ['70 г'] },
+          { name: 'products.item1', background: img1, tag: ['70 г'], qty: 12 },
+          { name: 'products.item2', background: img2, tag: ['20 г'], qty: 30 },
+          { name: 'products.item3', background: img3, tag: ['20 г'], qty: 30 },
+          { name: 'products.item4', background: img4, tag: ['20 г'], qty: 30 },
+          { name: 'products.item5', background: img5, tag: ['20 г'], qty: 30 },
+          { name: 'products.item6', background: img6, tag: ['70 г'], qty: 12 },
+          { name: 'products.item7', background: img7, tag: ['70 г'], qty: 12 },
+          { name: 'products.item8', background: img8, tag: ['70 г'], qty: 12 },
         ],
       }
     },
@@ -73,11 +71,8 @@
       window.removeEventListener('resize', this.onResize)
     },
     methods: {
-      onResize() {
-        this.windowWidth = window.innerWidth
-      },
+      onResize() { this.windowWidth = window.innerWidth },
     },
-    components: { Carousel, Slide, Navigation },
   })
 </script>
 
@@ -89,10 +84,8 @@
   margin-bottom: 8px;
 }
 
-/* ── Carousel overrides ── */
 .carousel {
   margin: 16px 0 24px;
-  /* prevent active-slide scale from clipping */
   padding: 16px 0 24px;
 }
 
@@ -100,18 +93,10 @@
   padding: 8px 12px;
 }
 
-/* Remove the 3D perspective effect — it causes cropping */
-.carousel__viewport {
-  perspective: none;
-  overflow: visible;
+:deep(.carousel__viewport) {
+  overflow: hidden;
 }
 
-.carousel__track {
-  transform-style: flat;
-  align-items: center;
-}
-
-/* Subtle scale only — no rotation, no overflow clipping */
 .carousel__slide {
   opacity: 0.75;
   transform: scale(0.92);
@@ -130,7 +115,6 @@
   z-index: 2;
 }
 
-/* ── Card ── */
 .card-carousel--card {
   background: #fff;
   border-radius: 16px;
@@ -140,12 +124,10 @@
   transition: box-shadow 0.3s ease;
   cursor: pointer;
 }
-
 .card-carousel--card:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
 }
 
-/* ── Image container: fixed height, contain so nothing gets cropped ── */
 .card-img-wrap {
   width: 100%;
   height: 220px;
@@ -153,11 +135,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   padding: 12px;
   box-sizing: border-box;
+  overflow: hidden;
 }
-
 .card-img-wrap img {
   max-width: 100%;
   max-height: 100%;
@@ -167,12 +148,10 @@
   user-select: none;
   transition: transform 0.25s ease;
 }
-
 .card-carousel--card:hover .card-img-wrap img {
   transform: scale(1.04);
 }
 
-/* ── Footer ── */
 .card-carousel--card--footer {
   padding: 12px 16px 14px;
   border-top: 1px solid #f0ede6;
@@ -192,6 +171,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+  margin-bottom: 8px;
+  justify-content: center;
 }
 
 .tag {
@@ -206,13 +187,18 @@
   letter-spacing: 0.03em;
 }
 
-.tag.secondary {
-  background: rgba(40, 44, 53, 0.06);
-  border-color: rgba(40, 44, 53, 0.15);
-  color: #666a73;
+.qty-info {
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+  padding-top: 6px;
+  border-top: 1px dashed #e8e4db;
+  line-height: 1.4;
+}
+.qty-info strong {
+  color: #1a1a2e;
 }
 
-/* ── Nav buttons ── */
 :deep(.carousel__prev),
 :deep(.carousel__next) {
   background: #FFD700;
@@ -223,16 +209,13 @@
   box-shadow: 0 2px 12px rgba(255, 215, 0, 0.4);
   transition: background 0.2s, transform 0.15s;
 }
-
 :deep(.carousel__prev:hover),
 :deep(.carousel__next:hover) {
   background: #ffbe00;
-  transform: scale(1.08);
+  //transform: scale(1.08);
 }
 
 @media (max-width: 576px) {
-  .card-img-wrap {
-    height: 180px;
-  }
+  .card-img-wrap { height: 180px; }
 }
 </style>
