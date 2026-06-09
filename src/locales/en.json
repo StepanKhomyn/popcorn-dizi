@@ -17,6 +17,7 @@
     },
     "slide_2_text_1": "Our company successfully cooperates with the largest retail networks of Ukraine, and also supplies products for export to European countries.",
     "slide_2_text_2": "The ISO22000 international food safety system is implemented in our production.",
+    "slide_3_text": "The main goal of LLC 'KDM Product' is for our consumers to be satisfied with the taste of our products, and also to be sure that we do not use artificial dyes and preservatives in the production of 'TM Dizzi' snack products."
     "slide_3_text": "The main goal of KDM Product LLC is for our consumers to be satisfied with the taste of our products, and to be sure that we do not use artificial dyes or preservatives in the production of TM Dizzi snack products.",
     "forbes_heading": "KDM Product LLC — on the Forbes NEXT 250 3.0 list!",
     "forbes_body_1": "In 2025, our company was included in the list of the 250 most promising small and medium-sized businesses in Ukraine according to",
@@ -37,7 +38,13 @@
     "send": "Send",
     "enter_name": "Please enter a name.",
     "enter_phone": "Please enter your phone",
-    "enter_text": "Please enter the message text."
+    "enter_text": "Please enter the message text.",
+    "get_in_touch": "Get in touch",
+    "send_message": "Send us a message",
+    "success": "Message sent successfully!",
+    "name_placeholder": "Your name",
+    "phone_placeholder": "0XXXXXXXXX",
+    "message_placeholder": "Your message…"
   },
   "products": {
     "chocolate_popcorn": "Chocolate caramelized popcorn TM Dizzi",
@@ -57,4 +64,23 @@
     "gram": "g"
   },
   "success": "Form submitted successfully!"
+    "chocolate_popcorn": "Dizzi Chocolate Caramel Popcorn",
+    "caramel_popcorn": "Dizzi Caramel Popcorn",
+    "fruit_popcorn": "Popcorn in fruit caramel",
+    "beckon_popcorn": "Popcorn with bacon flavour TM Dizzi",
+    "salty_popcorn": "Salted Popcorn TM Dizzi",
+    "chees_popcorn": "Popcorn with cheese flavour TM Dizzi",
+    "sweet_popcorn": "Sweet Popcorn TM Dizzi",
+    "fruit_mix_popcorn": "Fruit mix Popcorn TM Dizzi",
+    "corns_for_boys": "Sweet corn sticks with a surprise for boys TM Dizzi",
+    "corns_for_girls": "Sweet corn sticks with a surprise for girls TM Dizzi",
+    "item1": "Popcorn Super Cheese TM «Dizzi»",
+    "item2": "Popcorn with cheese flavour TM «Dizzi»",
+    "item3": "Sweet Popcorn TM «Dizzi»",
+    "item4": "Salted Popcorn TM «Dizzi»",
+    "item5": "Popcorn with bacon flavour TM «Dizzi»",
+    "item6": "Popcorn with bacon flavour TM «Dizzi»",
+    "item7": "Popcorn with cheese flavour TM «Dizzi»",
+    "item8": "Salted Popcorn TM «Dizzi»"
+  }
 }
