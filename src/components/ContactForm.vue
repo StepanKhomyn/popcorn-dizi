@@ -1,289 +1,514 @@
 <template>
-  <div class="w-100 pt-3" id="ready-popcorn">
-    <h2 class="fs-2 text-center heading-content">
-      {{ $t("header.ready_pop") }}
-    </h2>
+  <section id="contacts" class="contacts-section">
+    <div class="popcorn-bg" aria-hidden="true">
+      <span v-for="i in 12" :key="i" class="kernel" :style="kernelStyle(i)">🍿</span>
+    </div>
 
-    <Carousel
-        :items-to-show="windowWidth > 900 ? 3 : windowWidth > 400 ? 1.5 : 1"
-        :wrap-around="true"
-        :transition="500"
-    >
-      <Slide
-          v-for="(item, index) in items"
-          :key="index"
-          class="card-carousel-cards"
-      >
-        <div class="carousel__item">{{ slide }}</div>
+    <div class="contacts-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">{{ $t('header.contacts') }}</span>
+        <h2 class="section-title">{{ $t('form.get_in_touch') || 'Зв\'яжіться з нами' }}</h2>
+      </div>
 
-        <div class="card-carousel--card">
-          <img :src="item.background" />
-          <div class="card-carousel--card--footer">
-            <p class="fs-6">{{ $t(`${item.name}`) }}</p>
-            <p
-                class="tag"
-                v-for="(tag, index) in item.tag"
-                :key="index"
-                :class="index > 0 ? 'secondary' : ''"
-            >
-              {{ tag }} {{ $t("products.gram") }}
-            </p>
+      <div class="contacts-grid">
+        <!-- Left: Info -->
+        <div class="info-column">
+          <div class="info-card">
+            <div class="info-item">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <p class="info-label">{{ $t('form.main_address') }}</p>
+                <p class="info-value">{{ $t('form.address_main') }}</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <p class="info-label">{{ $t('form.working_address') }}</p>
+                <p class="info-value">{{ $t('form.address_working') }}</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <p class="info-label">{{ $t('form.info') }}</p>
+                <p class="info-value">+38 (093) 735 63 33</p>
+                <p class="info-value">dizzisnacks@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <p class="info-label">{{ $t('form.social_acc') }}</p>
+                <a
+                    href="https://www.instagram.com/dizzi_snacks?igsh=MWhnMGxzM3U1aTBwbg=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-link"
+                    aria-label="Instagram Dizzi Snacks"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  </svg>
+                  @dizzi_snacks
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </Slide>
 
-      <template #addons>
-        <Navigation />
-      </template>
-    </Carousel>
-  </div>
+        <!-- Right: Form -->
+        <div class="form-column">
+          <div class="form-card">
+            <h3 class="form-title">{{ $t('form.send_message') || 'Надіслати повідомлення' }}</h3>
+
+            <transition name="toast">
+              <div v-if="showToast" class="toast-success" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {{ $t('form.success') || 'Повідомлення надіслано!' }}
+              </div>
+            </transition>
+
+            <div class="form-body">
+              <div class="field-group" :class="{ 'has-error': !isNameValid }">
+                <label for="f-name" class="field-label">
+                  {{ $t('form.name') }}<span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <svg class="field-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                  </svg>
+                  <input
+                      id="f-name"
+                      type="text"
+                      class="field-input"
+                      :placeholder="$t('form.name_placeholder') || 'Ваше імя'"
+                      v-model="formData.name"
+                      @blur="validateName"
+                      autocomplete="name"
+                  />
+                </div>
+                <transition name="err">
+                  <p v-if="!isNameValid" class="field-error">{{ $t('form.enter_name') }}</p>
+                </transition>
+              </div>
+
+              <div class="field-group" :class="{ 'has-error': !isPhoneValid }">
+                <label for="f-phone" class="field-label">
+                  {{ $t('form.phone_number') }}<span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <svg class="field-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>
+                  <input
+                      id="f-phone"
+                      type="tel"
+                      class="field-input"
+                      :placeholder="$t('form.phone_placeholder') || '0XXXXXXXXX'"
+                      v-model="formData.phone"
+                      @blur="validatePhone"
+                      autocomplete="tel"
+                  />
+                </div>
+                <transition name="err">
+                  <p v-if="!isPhoneValid" class="field-error">{{ $t('form.enter_phone') }}</p>
+                </transition>
+              </div>
+
+              <div class="field-group" :class="{ 'has-error': !isMessageValid }">
+                <label for="f-message" class="field-label">
+                  {{ $t('form.text_message') }}<span class="required">*</span>
+                </label>
+                <textarea
+                    id="f-message"
+                    class="field-input field-textarea"
+                    :placeholder="$t('form.message_placeholder') || 'Ваше повідомлення…'"
+                    v-model="formData.message"
+                    rows="4"
+                    @blur="validateMessage"
+                ></textarea>
+                <transition name="err">
+                  <p v-if="!isMessageValid" class="field-error">{{ $t('form.enter_text') }}</p>
+                </transition>
+              </div>
+
+              <button type="button" class="submit-btn" @click="submitForm" :disabled="isSubmitting">
+                <span v-if="!isSubmitting" class="btn-inner">
+                  {{ $t('form.send') }}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="17" height="17">
+                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
+                </span>
+                <span v-else class="spinner" aria-label="Надсилання..."></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-  import { defineComponent } from "vue";
-  import { Carousel, Navigation, Slide } from "vue3-carousel";
-
-  import "vue3-carousel/dist/carousel.css";
-
-  // 70 g flat bags
-  import super_cheese_70 from "./slider-element/super_cheeze_70.png"; // keep
-  import salted_70 from "./slider-element/salted_70.png"; // keep – no changes
-  import cheese_70 from "./slider-element/cheeze_70.png"; // UPDATE to new image (Image 8 – extra-cheese bag 70g)
-  import bacon_70 from "./slider-element/backon_70.png"; // UPDATE to new image (Image 13 cup or keep bag)
-
-  // 20 g cups  — UPDATE these imports to your new cup photos
-  import sweet_20 from "./slider-element/20_g_sweet.png"; // Image 11 – sweet cup
-  import salted_20 from "./slider-element/20_g_salted.png"; // Image 12 – salted cup
-  import bacon_20 from "./slider-element/20_g_backon.png"; // Image 13 – bacon cup
-  import cheese_20 from "./slider-element/20_g_chees.png"; // Image 9/10 – cheese cup
-
-  // NEW cup products added
-  // fruit mix cup  → use one of the fruit cup images (Image 3/4)
-  import fruit_mix_cup from "./slider-element/fruit_mix_cup.png"; // Image 3/4
-  // caramel cup         (Image 5)
-  import caramel_cup from "./slider-element/caramel_cup.png";
-  // chocolate cup       (Image 6)
-  import choc_cup from "./slider-element/chocolate_cup.png";
-
-  export default defineComponent({
-    name: "ReadyPopcornSlider",
+  export default {
+    name: 'ContactForm',
     data() {
       return {
-        windowWidth: window.innerWidth,
-        items: [
-          // ── 70 g flat bags ─────────────────────────────────────────
-          {
-            name: "products.super_chees_popcorn",
-            background: super_cheese_70,
-            tag: ["70"],
-          },
-          {
-            name: "products.salty_popcorn",
-            background: salted_70,
-            tag: ["70"],
-          },
-          {
-            name: "products.chees_popcorn",
-            background: cheese_70,
-            tag: ["70"],
-          },
-          {
-            name: "products.beckon_popcorn",
-            background: bacon_70,
-            tag: ["70"],
-          },
-          // ── 20 g cups ──────────────────────────────────────────────
-          {
-            name: "products.sweet_popcorn",
-            background: sweet_20,
-            tag: ["20"],
-          },
-          {
-            name: "products.salty_popcorn",
-            background: salted_20,
-            tag: ["20"],
-          },
-          {
-            name: "products.beckon_popcorn",
-            background: bacon_20,
-            tag: ["20"],
-          },
-          {
-            name: "products.chees_popcorn",
-            background: cheese_20,
-            tag: ["20"],
-          },
-          // ── NEW cup products ────────────────────────────────────────
-          {
-            name: "products.fruit_mix_popcorn",
-            background: fruit_mix_cup,
-            tag: ["55"],
-          },
-          {
-            name: "products.caramel_popcorn",
-            background: caramel_cup,
-            tag: ["55"],
-          },
-          {
-            name: "products.chocolate_popcorn",
-            background: choc_cup,
-            tag: ["55"],
-          },
-        ],
+        formData: { name: '', phone: '', message: '' },
+        isNameValid: true,
+        isPhoneValid: true,
+        isMessageValid: true,
+        showToast: false,
+        isSubmitting: false,
       };
     },
-    components: {
-      Carousel,
-      Slide,
-      Navigation,
+    methods: {
+      kernelStyle(i) {
+        const positions = [
+          { top: '8%',  left: '5%'  }, { top: '15%', left: '88%' },
+          { top: '30%', left: '2%'  }, { top: '45%', left: '93%' },
+          { top: '62%', left: '7%'  }, { top: '75%', left: '90%' },
+          { top: '85%', left: '12%' }, { top: '20%', left: '78%' },
+          { top: '55%', left: '82%' }, { top: '70%', left: '3%'  },
+          { top: '90%', left: '70%' }, { top: '5%',  left: '45%' },
+        ];
+        const p = positions[(i - 1) % positions.length];
+        return {
+          top: p.top,
+          left: p.left,
+          animationDelay: `${(i * 0.7) % 4}s`,
+          fontSize: `${1.2 + ((i * 0.3) % 1.2)}rem`,
+          opacity: 0.12 + (i % 5) * 0.04,
+        };
+      },
+      validateName()    { this.isNameValid    = !!this.formData.name.trim(); },
+      validatePhone()   { this.isPhoneValid   = /^[0-9]{10}$/.test(this.formData.phone.trim()); },
+      validateMessage() { this.isMessageValid = !!this.formData.message.trim(); },
+      async submitForm() {
+        this.validateName();
+        this.validatePhone();
+        this.validateMessage();
+        if (!this.isNameValid || !this.isPhoneValid || !this.isMessageValid) return;
+        this.isSubmitting = true;
+        await new Promise(r => setTimeout(r, 900));
+        this.isSubmitting = false;
+        this.formData = { name: '', phone: '', message: '' };
+        this.showToast = true;
+        setTimeout(() => { this.showToast = false; }, 3500);
+      },
     },
-    mounted() {
-      window.addEventListener("resize", () => {
-        this.windowWidth = window.innerWidth;
-      });
-    },
-    unmounted() {
-      window.removeEventListener("resize", () => {
-        this.windowWidth = window.innerWidth;
-      });
-    },
-  });
+  };
 </script>
+
 <style scoped>
-.heading-content {
-  font-family: Roboto, sans-serif;
-}
-.fs-6 {
-  font-size: 0.85rem !important;
-  font-family: Roboto, sans-serif;
-}
-.carousel {
-  margin: 10px 0;
-}
-.carousel__slide {
-  padding: 10px;
-  margin: 10px 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
 
-.carousel__viewport {
-  perspective: 2000px;
-}
-
-.carousel__track {
-  transform-style: preserve-3d;
-}
-
-.carousel__slide--sliding {
-  transition: 0.5s;
-}
-
-.carousel__slide {
-  opacity: 0.9;
-  transform: rotateY(-20deg) scale(0.9);
-}
-
-.carousel__slide--active ~ .carousel__slide {
-  transform: rotateY(20deg) scale(0.9);
-}
-
-.carousel__slide--prev {
-  opacity: 1;
-  transform: rotateY(-10deg) scale(0.95);
-}
-
-.carousel__slide--next {
-  opacity: 1;
-  transform: rotateY(10deg) scale(0.95);
-}
-
-.carousel__slide--active {
-  opacity: 1;
-  transform: rotateY(0) scale(1.1);
-}
-
-.card-carousel-cards .card-carousel--card {
-  margin: 0 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06),
-  0 2px 2px 0 rgba(40, 44, 53, 0.08);
-  background-color: #fff;
-  border-radius: 4px;
-  z-index: 3;
-  margin-bottom: 2px;
-  width: 100%;
-}
-.card-carousel-cards .card-carousel--card:first-child {
-  margin-left: 0;
-}
-.card-carousel-cards .card-carousel--card:last-child {
-  margin-right: 0;
-}
-.card-carousel-cards .card-carousel--card img {
-  vertical-align: bottom;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  transition: opacity 150ms linear;
-  user-select: none;
-  height: 12rem;
-  width: 100%;
-  object-fit: contain;
-  background: #fafafa;
-}
-.card-carousel-cards .card-carousel--card img:hover {
-  opacity: 0.5;
-}
-.card-carousel-cards .card-carousel--card--footer {
-  border-top: 0;
-  padding: 7px 15px;
-}
-.card-carousel-cards .card-carousel--card--footer p {
-  padding: 3px 0;
-  margin: 0;
-  margin-bottom: 2px;
-  font-size: 19px;
-  font-weight: 500;
-  color: #2c3e50;
-  user-select: none;
-}
-.card-carousel-cards .card-carousel--card--footer p.tag {
-  font-size: 11px;
-  font-weight: 300;
-  padding: 4px;
-  background: rgba(40, 44, 53, 0.06);
-  display: inline-block;
+.contacts-section {
   position: relative;
-  margin-left: 4px;
-  color: #666a73;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  min-height: 100vh;
+  padding: 72px 24px 80px;
+  font-family: 'Inter', sans-serif;
 }
-.card-carousel-cards .card-carousel--card--footer p.tag:before {
-  content: "";
-  float: left;
+
+.popcorn-bg {
   position: absolute;
-  top: 0;
-  left: -12px;
-  width: 0;
-  height: 0;
-  border-color: transparent rgba(40, 44, 53, 0.06) transparent transparent;
-  border-style: solid;
-  border-width: 8px 12px 12px 0;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }
-.card-carousel-cards .card-carousel--card--footer p.tag.secondary {
-  margin-left: 0;
-  border-left: 1.45px dashed white;
-}
-.card-carousel-cards .card-carousel--card--footer p.tag.secondary:before {
-  display: none !important;
-}
-.card-carousel-cards .card-carousel--card--footer p.tag:after {
-  content: "";
+.kernel {
   position: absolute;
-  top: 8px;
-  left: -3px;
-  float: left;
-  width: 4px;
+  animation: floatKernel 6s ease-in-out infinite alternate;
+  user-select: none;
+}
+@keyframes floatKernel {
+  from { transform: translateY(0) rotate(-8deg); }
+  to   { transform: translateY(-18px) rotate(8deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kernel { animation: none; }
+}
+
+.contacts-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.section-eyebrow {
+  display: inline-block;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .contacts-grid { grid-template-columns: 1fr; }
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.info-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.info-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFD700;
+}
+.info-icon svg { width: 18px; height: 18px; }
+.info-content { flex: 1; }
+.info-label {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #FFD700;
+  margin: 0 0 4px;
+}
+.info-value {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 2px;
+  line-height: 1.55;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.social-link:hover { color: #FFD700; }
+.social-link:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.form-card {
+  background: #FFF8E7;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
   height: 4px;
-  border-radius: 2px;
-  background: white;
-  box-shadow: 0px 0px 0px #004977;
+  background: linear-gradient(90deg, #FFD700, #FF6B6B, #FFD700);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  from { background-position: 0% center; }
+  to   { background-position: 200% center; }
+}
+.form-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0 0 28px;
+}
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-group { display: flex; flex-direction: column; gap: 6px; }
+.field-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3a3a4a;
+  letter-spacing: 0.02em;
+}
+.required { color: #FF6B6B; margin-left: 2px; }
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.field-icon {
+  position: absolute;
+  left: 13px;
+  width: 16px;
+  height: 16px;
+  color: #aaa;
+  pointer-events: none;
+  transition: color 0.2s;
+}
+.input-wrapper:focus-within .field-icon { color: #ffbe00; }
+.field-input {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border: 1.5px solid #e0ddd4;
+  border-radius: 12px;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.93rem;
+  color: #1a1a2e;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  outline: none;
+  appearance: none;
+}
+.field-textarea {
+  padding-left: 14px;
+  resize: vertical;
+  min-height: 110px;
+}
+.field-input::placeholder { color: #bbb; }
+.field-input:focus {
+  border-color: #FFD700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.18);
+}
+.has-error .field-input {
+  border-color: #FF6B6B;
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.12);
+}
+.field-error {
+  font-size: 0.77rem;
+  color: #FF6B6B;
+  margin: 0;
+  font-weight: 500;
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #FFD700 0%, #ffbe00 100%);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-top: 4px;
+  box-shadow: 0 6px 20px rgba(255,215,0,0.4);
+}
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255,215,0,0.55);
+}
+.submit-btn:active:not(:disabled) { transform: translateY(0); }
+.submit-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+.submit-btn:focus-visible { outline: 2px solid #1a1a2e; outline-offset: 3px; }
+.btn-inner { display: flex; align-items: center; gap: 9px; }
+
+.spinner {
+  display: inline-block;
+  width: 20px; height: 20px;
+  border: 2.5px solid rgba(26,26,46,0.3);
+  border-top-color: #1a1a2e;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.toast-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #e6f9ee;
+  border: 1px solid #5cb85c;
+  color: #2d6a2d;
+  border-radius: 12px;
+  padding: 11px 15px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.toast-enter-active, .toast-leave-active { transition: opacity 0.3s, transform 0.3s; }
+.toast-enter-from, .toast-leave-to { opacity: 0; transform: translateY(-8px); }
+
+.err-enter-active, .err-leave-active { transition: opacity 0.2s, transform 0.2s; }
+.err-enter-from, .err-leave-to { opacity: 0; transform: translateY(-4px); }
+
+@media (max-width: 480px) {
+  .contacts-section { padding: 48px 16px 60px; }
+  .form-card { padding: 28px 20px; }
+  .info-card { padding: 24px 20px; }
 }
 </style>
