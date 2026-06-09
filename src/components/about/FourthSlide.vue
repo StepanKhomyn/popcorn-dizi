@@ -59,7 +59,7 @@ export default {
 
 .slide {
   position: relative;
-  height: 650px; /* Трохи збільшили висоту для кращої місткості типографіки */
+  height: 560px; /* Трохи збільшили висоту для кращої місткості типографіки */
   background-color: #d10512; /* Глибокий благородний червоний */
   display: flex;
   overflow: hidden;
@@ -296,7 +296,7 @@ export default {
 @media (max-width: 1024px) {
   .slide {
     height: auto;
-    min-height: 600px;
+    min-height: 560px;
   }
   .magazine-title {
     font-size: 1.9rem;
