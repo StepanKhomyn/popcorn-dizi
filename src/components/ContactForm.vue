@@ -1,4 +1,5 @@
 <template>
+    <NotificationSuccess v-if="show"/>
     <div class="container-fluid" id="contacts">
         <h1 class="text-center text-light mt-4">{{$t('header.contacts')}}</h1>
         <div class="row justify-content-center container-form">
@@ -25,50 +26,50 @@
                         </div>
                     </div>
                     <div class="col-md-6 row-margin">
-                        <form class="needs-validation contact-form" novalidate @submit.prevent="submitForm">
-                    <div class="row g-3">
-                        <div class="col-12 mb-4">
-                            <label for="validationCustom01" class="form-label " :class="{'text-black': isNameValid, 'text-danger': !isNameValid}">{{$t('form.name')}}<span :class="{'text-danger': !isNameValid}">*</span></label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" :class="{'text-black': isNameValid, 'text-danger': !isNameValid}"  viewBox="0 0 16 16">
-                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                    </svg>
-                                </span>
-                                <input type="text" class="form-control" id="validationCustom01" required v-model="formData.name" :class="{'is-invalid': !isNameValid}">
-                                <div class="invalid-feedback text-danger" v-if="!isNameValid">
-                                    {{$t('form.enter_name')}}
+                        <form class="needs-validation contact-form" id="contactForm" novalidate @submit="submitForm" method="POST" action="mail.php">
+                            <div class="row g-3">
+                                <div class="col-12 mb-4">
+                                    <label for="validationCustom01" class="form-label " :class="{'text-black': isNameValid, 'text-danger': !isNameValid}">{{$t('form.name')}}<span :class="{'text-danger': !isNameValid}">*</span></label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" :class="{'text-black': isNameValid, 'text-danger': !isNameValid}"  viewBox="0 0 16 16">
+                                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                            </svg>
+                                        </span>
+                                        <input type="text" class="form-control" id="validationCustom01" name="name" required v-model="formData.name" :class="{'is-invalid': !isNameValid}">
+                                        <div class="invalid-feedback text-danger" v-if="!isNameValid">
+                                            {{$t('form.enter_name')}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-4">
+                                    <label for="validationCustom02" class="form-label " :class="{'text-black': isPhoneValid, 'text-danger': !isPhoneValid}">{{$t('form.phone_number')}}<span :class="{'text-danger': !isPhoneValid}">*</span></label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" :class="{'text-black': isPhoneValid, 'text-danger': !isPhoneValid}"  viewBox="0 0 16 16">
+                                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                            </svg>
+                                        </span>
+                                        <input type="tel" class="form-control" id="validationCustom02" name="phone" required pattern="[0-9]{10}" v-model="formData.phone" :class="{'is-invalid': !isPhoneValid}">
+                                        <div class="invalid-feedback text-danger" v-if="!isPhoneValid">
+                                            {{$t('form.enter_phone')}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12  mb-4">
+                                    <label for="validationCustom03" class="form-label" :class="{'text-black': isMessageValid, 'text-danger': !isMessageValid}">{{$t('form.text_message')}}<span :class="{'text-danger': !isMessageValid}">*</span></label>
+                                    <textarea class="form-control" id="validationCustom03" name="message" rows="3" required v-model="formData.message" :class="{'is-invalid': !isMessageValid}"></textarea>
+                                    <div class="invalid-feedback text-danger" v-if="!isMessageValid">
+                                        {{$t('form.enter_text')}}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-outline-secondary" @click="submitForm">{{$t('form.send')}}</button>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-12 mb-4">
-                            <label for="validationCustom02" class="form-label " :class="{'text-black': isPhoneValid, 'text-danger': !isPhoneValid}">{{$t('form.phone_number')}}<span :class="{'text-danger': !isPhoneValid}">*</span></label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" :class="{'text-black': isPhoneValid, 'text-danger': !isPhoneValid}"  viewBox="0 0 16 16">
-                                        <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-                                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-                                    </svg>
-                                </span>
-                                <input type="tel" class="form-control" id="validationCustom02" required pattern="[0-9]{10}" v-model="formData.phone" :class="{'is-invalid': !isPhoneValid}">
-                                <div class="invalid-feedback text-danger" v-if="!isPhoneValid">
-                                    {{$t('form.enter_phone')}}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12  mb-4">
-                            <label for="validationCustom03" class="form-label" :class="{'text-black': isMessageValid, 'text-danger': !isMessageValid}">{{$t('form.text_message')}}<span :class="{'text-danger': !isMessageValid}">*</span></label>
-                            <textarea class="form-control" id="validationCustom03" rows="3" required v-model="formData.message" :class="{'is-invalid': !isMessageValid}"></textarea>
-                            <div class="invalid-feedback text-danger" v-if="!isMessageValid">
-                                {{$t('form.enter_text')}}
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button type="button" class="btn btn-outline-secondary" @click="submitForm">{{$t('form.send')}}</button>
-                        </div>
-                    </div>
                         </form>
                     </div>
                 </div>
@@ -78,10 +79,16 @@
 </template>
 
 <script>
+import NotificationSuccess from "@/components/NotificationSuccess.vue";
+
 export default {
     name: 'ContactForm',
+    components: {
+       NotificationSuccess
+    },
     data() {
         return {
+            show: false,
             formData: {
                 name: '',
                 phone: '',
@@ -101,16 +108,17 @@ export default {
             this.isPhoneValid = /^[0-9]{10}$/.test(this.formData.phone);
             // Валідація повідомлення
             this.isMessageValid = !!this.formData.message;
-            console.log(this.isNameValid, this.isPhoneValid, this.isMessageValid)
+
             // Перевірка, чи всі дані валідні
             if (this.isNameValid && this.isPhoneValid && this.isMessageValid) {
-                console.log("llsd")
                 // Очищення форми
+                document.getElementById("contactForm").submit();
                 this.formData = {
                     name: '',
                     phone: '',
                     message: ''
                 };
+                this.show = true;
             }
         }
     }
