@@ -1,319 +1,320 @@
 <template>
-    <div class="slide">
-        <div class="logo">
-            <div class="logo-container">
-            </div>
-        </div>
-        <div class="text-container">
-            <span class="text from-right">
-                {{$t('slider.slide_2_text_1')}}
-            </span>
-            <span class="text from-left">
-                {{$t('slider.slide_2_text_2')}}
-            </span>
-        </div>
+  <div class="slide">
+    <!-- Ефект легкої віньєтки та художнього освітлення -->
+    <div class="ambient-overlay" aria-hidden="true"></div>
 
-        <div class="person">
-            <div class="popcorn-container">
-                <div class="popcorn-container2">
-                    <div class="one-pop" v-for="(index, key) in 6" :key="key"></div>
-                </div>
+    <!-- ЛІВА ПАНЕЛЬ: Елегантна журнальна верстка тексту -->
+    <div class="content-side">
+      <div class="brand-tag">
+        <span class="tag-line">Premium Quality</span>
+      </div>
 
-            </div>
-        </div>
+      <div class="text-container">
+        <h2 class="text text-top">
+          {{ $t('slider.slide_2_text_1') }}
+        </h2>
+        <div class="text-divider"></div>
+        <p class="text text-bottom">
+          {{ $t('slider.slide_2_text_2') }}
+        </p>
+      </div>
     </div>
+
+    <!-- ПРАВА ПАНЕЛЬ: Об'ємна 3D композиція бренду -->
+    <div class="visual-side">
+      <div class="hero-composition">
+        <!-- Центральний боул або фірмова пачка -->
+        <div class="main-dish-wrapper">
+          <div class="main-dish-image"></div>
+          <!-- Логотип, що ніби "ширяє" над попкорном -->
+          <div class="logo-floating-badge">
+            <div class="dizi-logo"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ФРОНТАЛЬНИЙ ШАР: Динамічний 3D-пад кукурудзи (ефект глибини різкості) -->
+    <div class="popcorn-rain-overlay" aria-hidden="true">
+      <!-- Задні дрібні зерна -->
+      <div class="falling-pop core-back b-1"></div>
+      <div class="falling-pop core-back b-2"></div>
+      <div class="falling-pop core-back b-3"></div>
+
+      <!-- Середні чіткі зерна -->
+      <div class="falling-pop core-mid m-1"></div>
+      <div class="falling-pop core-mid m-2"></div>
+      <div class="falling-pop core-mid m-3"></div>
+
+      <!-- Передні гігантські розмиті зерна (кінематографічний blur) -->
+      <div class="falling-pop core-front f-1"></div>
+      <div class="falling-pop core-front f-2"></div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'SecondSlide'
+  name: 'SecondSlide'
 }
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap');
 
 .slide {
-    position: relative;
-    height: 600px;
-    background-image: url("@/assets/about_us_fourth_bg.jpg");
-    overflow: hidden;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+  position: relative;
+  height: 560px;
+  background-image: url("@/assets/about_us_fourth_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  font-family: 'Inter', sans-serif;
 }
+
+/* Об'ємне тонування фону */
+.ambient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0.2) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- ЛІВА СТОРОНА: ТЕКСТ --- */
+.content-side {
+  position: relative;
+  z-index: 10;
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5rem;
+}
+
+.brand-tag {
+  opacity: 0;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin-bottom: 1rem;
+}
+
+.tag-line {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: #e8820c;
+  background: rgba(232, 130, 12, 0.08);
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
 .text-container {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    height: 100%;
-    justify-content: center;
-    font-weight: 400;
-    gap: 1.2rem;
-    text-align: start;
-    animation: slideInFromBottom 1s forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .text {
-    font-family: "DM Serif Display";
-    text-shadow: 0 0 5px rgb(255 255 255);
-    font-weight: 400;
-    letter-spacing: 0;
-    font-size: 1.7rem;
-    line-height: 1.1;
-    color: #000000;
-    width: 50%;
+  margin: 0;
+  opacity: 0;
+  color: #231206; /* Шляхетний шоколадний */
 }
-.from-right {
+
+.text-top {
+  font-family: "DM Serif Display", serif;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  max-width: 520px;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+}
+
+.text-divider {
+  width: 40px;
+  height: 3px;
+  background-color: #e8820c;
+  border-radius: 2px;
+  opacity: 0;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+}
+
+.text-bottom {
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #544438;
+  max-width: 460px;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+}
+
+/* --- ПРАВА СТОРОНА: СЦЕНА З БОУЛОМ ТА ЛОГОТИПОМ --- */
+.visual-side {
+  flex: 0.9;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-composition {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Контейнер для головної страви/пачки попкорну */
+.main-dish-wrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  animation: dishEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Малюємо умовну красиву тарілку/елемент за допомогою фону або твого ассету */
+.main-dish-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-image: url("@/assets/popcorn-pack.png"); /* Можна змінити на купу попкорну або боул */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 20px 40px rgba(35, 18, 6, 0.15));
+}
+
+/* Логотип, що елегантно літає над об'єктом */
+.logo-floating-badge {
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  background: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(232, 130, 12, 0.15);
+  animation: floaty 4s ease-in-out infinite;
+}
+
+.dizi-logo {
+  width: 100px;
+  height: 40px;
+  background-image: url("@/assets/dizi-logo-without-text.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* --- КІНЕМАТОГРАФІЧНИЙ ПАД ПОПКОРНУ (3 SHADOW LAYERS) --- */
+.popcorn-rain-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20; /* Поверх усього контенту */
+  pointer-events: none;
+}
+
+.falling-pop {
+  position: absolute;
+  background-image: url("@/assets/one-popcorn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -60px;
+  opacity: 0;
+}
+
+/* Шар 1: Далекий план (маленькі, за контентом) */
+.core-back {
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  filter: blur(1px);
+  animation: cinemaFall 3.5s linear infinite;
+}
+.b-1 { left: 15%; animation-delay: 0.2s; }
+.b-2 { left: 45%; animation-delay: 1.5s; }
+.b-3 { left: 75%; animation-delay: 0.8s; }
+
+/* Шар 2: Середній план (чіткі зерна середнього розміру) */
+.core-mid {
+  width: 35px;
+  height: 35px;
+  z-index: 12;
+  animation: cinemaFall 2.8s linear infinite;
+}
+.m-1 { left: 30%; animation-delay: 0s; }
+.m-2 { left: 60%; animation-delay: 1.1s; }
+.m-3 { left: 85%; animation-delay: 2.1s; }
+
+/* Шар 3: Ближній план (величезні, розмиті перед камерою) */
+.core-front {
+  width: 75px;
+  height: 75px;
+  z-index: 25;
+  filter: blur(5px); /* Ефект фокусу камери */
+  animation: cinemaFall 2.2s linear infinite;
+}
+.f-1 { left: 8%; animation-delay: 0.5s; }
+.f-2 { left: 70%; animation-delay: 1.8s; }
+
+/* --- ПРЕМІУМ АНІМАЦІЇ --- */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dishEntrance {
+  from { opacity: 0; transform: scale(0.9) rotate(-3deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+
+/* Реалістичне падіння з обертанням у просторі */
+@keyframes cinemaFall {
+  0% {
+    top: -60px;
     opacity: 0;
-    animation: slideInFromRight 1s forwards;
-}
-
-.from-left {
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 105%;
     opacity: 0;
-    animation: slideInFromLeft 1s forwards;
-}
-.logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 100%;
-}
-.person {
-    width: 300px;
-    height: 390px;
-    background-image: url("@/assets/person1.png");
-    background-size: cover;
-    position: absolute;
-    bottom: 0;
-    right: 20px;
-    z-index: 2;
-}
-.logo-container {
-    position: relative;
-    width: 290px;
-    height: 120px;
-    background-image: url("@/assets/dizi-logo-without-text.png");
-    background-size: cover;
+    transform: translateX(45px) rotate(360deg);
+  }
 }
 
-
-.logo-container .letter {
-    position: absolute;
-    font-family: 'Rouge Script', cursive;
-    font-size: 90px;
-    font-weight: bold;
-    color: #fafafa;
-    text-transform: uppercase;
-    font-weight: 600;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    opacity: 0;
-}
-.popcorn-container {
-    position: absolute;
-    bottom: 255px; /* Adjust the bottom position */
-    transform: translateX(-50%);
+/* --- АДАПТИВНІСТЬ --- */
+@media (max-width: 1200px) {
+  .content-side { padding-left: 3rem; }
+  .text-top { font-size: 2rem; }
+  .main-dish-wrapper { width: 260px; height: 260px; }
+  .logo-floating-badge { padding: 8px 16px; }
 }
 
-.popcorn-container2 {
-    position: relative;
-    height: 260px;
+@media (max-width: 850px) {
+  .slide {
+    height: auto;
+    flex-direction: column;
+    padding: 5rem 2rem 3rem 2rem;
+  }
+  .ambient-overlay {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+  }
+  .content-side { padding-left: 0; flex: 1; width: 100%; }
+  .visual-side { margin-top: 2.5rem; flex: 1; width: 100%; }
+  .main-dish-wrapper { width: 240px; height: 240px; }
+  .core-front { display: none; } /* Вимикаємо важкі ефекти блуру на мобільних */
 }
-
-.one-pop {
-    width: 50px;
-    height: 50px;
-    background-image: url("@/assets/one-popcorn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 0;
-    animation: popAnimation 1.5s forwards;
-}
-
-.one-pop:nth-child(1) {
-    animation-delay: 0.3s;
-    animation: popAnimation1 1s forwards;
-}
-
-.one-pop:nth-child(2) {
-    animation-delay: 0.5s;
-    animation: popAnimation2 0.5s forwards;
-}
-
-.one-pop:nth-child(3) {
-    animation-delay: 0.4s;
-    animation: popAnimation3 2s forwards;
-}
-
-.one-pop:nth-child(4) {
-    animation-delay: 0.6s;
-    animation: popAnimation4 1.5s forwards;
-}
-
-.one-pop:nth-child(5) {
-    animation-delay: 0.7s;
-    animation: popAnimation5 1s forwards;
-}
-
-.one-pop:nth-child(6) {
-    animation-delay: 0.3s;
-    animation: popAnimation6 0.5s forwards;
-}
-
-@keyframes popAnimation1 {
-    0% {
-        transform: translateY(0px) translateX(0px); /* Start at 0px left */
-    }
-    100% {
-        transform: translateY(266px) translateX(-45px); /* End at 10px left */
-    }
-}
-
-@keyframes popAnimation2 {
-    0% {
-        transform: translateY(0px) translateX(0px); /* Start at 0px left */
-    }
-    100% {
-        transform: translateY(256px) translateX(-17px); /* End at 15px left */
-    }
-}
-
-@keyframes popAnimation3 {
-    0% {
-        transform: translateY(0px) translateX(0px); /* Start at 0px left */
-    }
-    100% {
-        transform: translateY(275px) translateX(49px); /* End at 20px left */
-    }
-}
-
-@keyframes popAnimation4 {
-    0% {
-        transform: translateY(0px) translateX(0px); /* Start at 0px left */
-    }
-    100% {
-        transform: translateY(245px) translateX(25px); /* End at 25px left */
-    }
-}
-
-@keyframes popAnimation5 {
-    0% {
-        transform: translateY(0px) translateX(0px); /* Start at 0px left */
-    }
-    100% {
-        transform: translateY(255px) translateX(80px); /* End at 100px left */
-    }
-}
-
-@keyframes popAnimation6 {
-    0% {
-        transform: translateY(0px) translateX(0px); /* Start at 0px left */
-    }
-    100% {
-        transform: translateY(270px) translateX(5px); /* End at 25px left */
-    }
-}
-@media (max-width: 1250px) {
-    .text {
-        font-size: 1.6rem;
-        margin-bottom: 1.2rem;
-    }
-    .person {
-        width: 200px!important;
-        height: 290px!important;
-    }
-}
-@media (max-width: 600px) {
-    .text {
-        font-size: 1.2rem;
-    }
-    .person {
-        width: 160px!important;
-        height: 240px!important;
-    }
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.items{
-    width: 300px;
-    height: 100%;
-    position: relative;
-}
-.pack {
-    position: absolute;
-    width: 250px;
-}
-.pack-1{
-    width: 250px;
-    height: 295px;
-    background-size: cover;
-    background-image: url("@/assets/popcorn-pack.png");
-    animation: slideInFromBottomLeft 1s forwards;
-    bottom: 50px
-}
-.pack-2{
-    width: 250px;
-    height: 280px;
-    background-size: cover;
-    background-image: url("@/assets/popcorn3.png");
-    animation: slideInFromTopRight 1s forwards;
-    right: 130px
-}
-
-@keyframes slideInFromBottomLeft {
-    from {
-        opacity: 0;
-        transform: translate(-100%, 100%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-20%, 20%);
-    }
-}
-
-@keyframes slideInFromTopRight {
-    from {
-        opacity: 0;
-        transform: translate(100%, -100%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(90%, 0);
-    }
-}
-
 </style>
