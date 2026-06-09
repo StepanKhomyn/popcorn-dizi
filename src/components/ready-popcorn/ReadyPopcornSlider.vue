@@ -164,7 +164,7 @@
   color: #1a1a2e;
   margin: 0 0 8px;
   line-height: 1.35;
-  min-height: 2.4em;
+  //min-height: 2.4em;
 }
 
 .tags-row {
