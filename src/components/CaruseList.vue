@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-carousel">
+  <div id="carouselExampleIndicators" class="custom-carousel">
     <div class="carousel-inner">
       <transition name="fade" mode="out-in">
         <div :key="currentSlide" class="carousel-item-wrapper">
@@ -10,12 +10,12 @@
 
     <div class="carousel-indicators">
       <button
-        v-for="(slide, index) in slides"
-        :key="index"
-        type="button"
-        :class="{ active: index === currentSlide }"
-        :aria-label="'Slide ' + (index + 1)"
-        @click="goToSlide(index)"
+          v-for="(slide, index) in slides"
+          :key="index"
+          type="button"
+          :class="{ active: index === currentSlide }"
+          :aria-label="'Slide ' + (index + 1)"
+          @click="goToSlide(index)"
       ></button>
     </div>
 
@@ -29,63 +29,63 @@
 </template>
 
 <script>
-import FirstSlide from "@/components/about/FirstSlide.vue";
-import SecondSlide from "@/components/about/SecondSlide.vue";
-import ThirdSlide from "@/components/about/ThirdSlide.vue";
-import FourthSlide from "@/components/about/FourthSlide.vue";
+  import FirstSlide from "@/components/about/FirstSlide.vue";
+  import SecondSlide from "@/components/about/SecondSlide.vue";
+  import ThirdSlide from "@/components/about/ThirdSlide.vue";
+  import FourthSlide from "@/components/about/FourthSlide.vue";
 
-export default {
-  name: "CaruseList",
-  data() {
-    return {
-      currentSlide: 0,
-      autoplayTimer: null,
-      intervalDuration: 15000, // 15 секунд для кожного слайду
-      slides: [
-        { component: FirstSlide },
-        { component: SecondSlide },
-        { component: ThirdSlide },
-        { component: FourthSlide },
-      ],
-    };
-  },
-  mounted() {
-    this.startAutoplay();
-  },
-  beforeUnmount() {
-    this.stopAutoplay();
-  },
-  methods: {
-    startAutoplay() {
-      this.stopAutoplay(); // Про всяк випадок очищуємо старий таймер
-      this.autoplayTimer = setInterval(() => {
-        this.nextSlide();
-      }, this.intervalDuration);
+  export default {
+    name: "CaruseList",
+    data() {
+      return {
+        currentSlide: 0,
+        autoplayTimer: null,
+        intervalDuration: 15000, // 15 секунд для кожного слайду
+        slides: [
+          { component: FirstSlide },
+          { component: SecondSlide },
+          { component: ThirdSlide },
+          { component: FourthSlide },
+        ],
+      };
     },
-    stopAutoplay() {
-      if (this.autoplayTimer) {
-        clearInterval(this.autoplayTimer);
-      }
-    },
-    nextSlide() {
-      this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-      this.resetAutoplay();
-    },
-    prevSlide() {
-      this.currentSlide =
-        (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-      this.resetAutoplay();
-    },
-    goToSlide(index) {
-      this.currentSlide = index;
-      this.resetAutoplay();
-    },
-    resetAutoplay() {
-      // Скидаємо таймер при ручному кліку, щоб слайд не перемикався одразу
+    mounted() {
       this.startAutoplay();
     },
-  },
-};
+    beforeUnmount() {
+      this.stopAutoplay();
+    },
+    methods: {
+      startAutoplay() {
+        this.stopAutoplay(); // Про всяк випадок очищуємо старий таймер
+        this.autoplayTimer = setInterval(() => {
+          this.nextSlide();
+        }, this.intervalDuration);
+      },
+      stopAutoplay() {
+        if (this.autoplayTimer) {
+          clearInterval(this.autoplayTimer);
+        }
+      },
+      nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.resetAutoplay();
+      },
+      prevSlide() {
+        this.currentSlide =
+            (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.resetAutoplay();
+      },
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.resetAutoplay();
+      },
+      resetAutoplay() {
+        // Скидаємо таймер при ручному кліку, щоб слайд не перемикався одразу
+        this.startAutoplay();
+      },
+    },
+  };
 </script>
 
 <style scoped>
@@ -93,7 +93,6 @@ export default {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #000; /* або колір вашого фону */
 }
 
 .carousel-inner {
@@ -116,6 +115,11 @@ export default {
   border: none;
   width: 50px;
   height: 50px;
+
+  /* Фіксація форми */
+  flex-shrink: 0; /* Забороняє флекс-контейнерам стискати кнопку по ширині */
+  aspect-ratio: 1 / 1; /* Гарантує, що ширина завжди дорівнює висоті */
+
   border-radius: 50%;
   color: white;
   font-size: 2.5rem;
@@ -125,6 +129,7 @@ export default {
   justify-content: center;
   z-index: 30;
   transition: background 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .carousel-control:hover {
   background: rgba(0, 0, 0, 0.5);
@@ -137,7 +142,7 @@ export default {
 }
 .control-icon {
   line-height: 0;
-  margin-top: -4px; /* Коригування центрування знака */
+  margin-top: -4px;
 }
 
 /* --- Індикатори (Крапки) --- */
@@ -153,18 +158,45 @@ export default {
 .carousel-indicators button {
   width: 12px;
   height: 12px;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: none;
   background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
+
 .carousel-indicators button.active {
-  background: #e8820c; /* Твій фірмовий помаранчевий колір */
+  background: #e8820c;
   transform: scale(1.2);
 }
 
-/* --- Vue Transition Анімація плавного згасання (Fade) --- */
+
+/* --- АДАПТИВ ДЛЯ МОБІЛОК (iPhone) --- */
+@media (max-width: 768px) {
+  .carousel-control {
+    /* На мобільних міняємо тільки один розмір, aspect-ratio сам зробить її 38х38 */
+    width: 38px;
+    height: 38px;
+    font-size: 1.8rem;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .carousel-control.prev {
+    left: 8px;
+  }
+  .carousel-control.next {
+    right: 8px;
+  }
+
+  .carousel-indicators {
+    bottom: 15px;
+  }
+}
+
+/* --- Vue Transition --- */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.6s ease;
