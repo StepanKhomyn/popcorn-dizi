@@ -1,177 +1,492 @@
 <template>
-    <header class="navbar navbar-expand-lg navbar-dark header">
-        <div class="container flex-column position-relative adaptive">
-            <!-- Logo -->
-            <router-link to="/" class="logo"><img src="@/assets/dizi-logo.png" alt="dizi-logo"/></router-link>
+  <header class="snacks-header" :class="{ scrolled: isScrolled }">
+    <div class="header-top-bar"></div>
+    <div class="header-inner">
+      <!-- Logo -->
+      <router-link to="/" class="header-logo">
+        <img src="@/assets/dizi-logo.png" alt="Dizzi Snacks" class="logo-img"/>
+      </router-link>
 
-            <!-- Social media icons -->
-            <div class="social-icons">
-                <div class="social-icons-instagram">
-                    <a href="https://www.instagram.com/dizzi_snacks?igsh=MWhnMGxzM3U1aTBwbg==" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 2500 2500"><defs><radialGradient id="0" cx="332.14" cy="2511.81" r="3263.54" gradientUnits="userSpaceOnUse"><stop offset=".09" stop-color="#fa8f21"/><stop offset=".78" stop-color="#d82d7e"/></radialGradient><radialGradient id="1" cx="1516.14" cy="2623.81" r="2572.12" gradientUnits="userSpaceOnUse"><stop offset=".64" stop-color="#8c3aaa" stop-opacity="0"/><stop offset="1" stop-color="#8c3aaa"/></radialGradient></defs><path d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57" fill="url(#0)"/><path d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57" fill="url(#1)"/></svg>
-                    </a>
-                </div>
-                <div v-if="$i18n.locale === 'en'" class="links" @click="switchLocale('uk')">
-                  <UAFlag class="flag-icons"/>UA
-                </div>
-                <div v-else class="links" @click="switchLocale('en')">
-                  <UKFlag class="flag-icons"/>EN
-                </div>
+      <!-- Desktop nav -->
+      <nav class="header-nav desktop-nav" aria-label="Головна навігація">
+        <a href="#carouselExampleIndicators" class="nav-link">{{ $t('header.about') }}</a>
+        <div class="nav-dropdown" v-click-outside="() => dropdownOpen = false">
+          <button class="nav-link dropdown-btn" :aria-expanded="dropdownOpen" @click="dropdownOpen = !dropdownOpen">
+            {{ $t('header.popcorn') }}
+            <svg class="chevron" :class="{ rotated: dropdownOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <transition name="dropdown-fade">
+            <div class="dropdown-menu" v-show="dropdownOpen">
+              <a href="#caramel-popcorn" class="dropdown-item" @click="dropdownOpen = false">{{ $t('header.caramel_pop') }}</a>
+              <a href="#ready-popcorn" class="dropdown-item" @click="dropdownOpen = false">{{ $t('header.ready_pop') }}</a>
             </div>
-
-            <div class="d-flex align-items-center flex-row burger">
-                <!-- Navigation toggle button -->
-                <div data-bs-toggle="collapse" ata-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" v-if="$i18n.locale === 'en'" class="links" @click="switchLocale('uk')">
-                    <UAFlag class="flag-icons"/>UA
-                </div>
-                <div v-else class="links" @click="switchLocale('en')">
-                    <UKFlag class="flag-icons"/>EN
-                </div>
-                <button @click="closed = !closed" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <svg v-if="closed" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM7 12C7 11.4477 7.44772 11 8 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H8C7.44772 13 7 12.5523 7 12ZM13 18C13 17.4477 13.4477 17 14 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H14C13.4477 19 13 18.5523 13 18Z" fill="#000000"/>
-                    </svg>
-                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" fill="none">
-                        <path d="M4 18L20 18" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M4 12L20 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M4 6L20 6" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Navigation links -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="#carouselExampleIndicators" class="nav-link links">{{$t('header.about')}}</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle links" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{$t('header.popcorn')}}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-bs-theme="dark">
-                            <li><a href="#caramel-popcorn" class="dropdown-item drp-link">{{$t('header.caramel_pop')}}</a></li>
-                            <li><a href="#ready-popcorn" class="dropdown-item drp-link">{{$t('header.ready_pop')}}</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#corn-snacks" class="nav-link links">{{$t('header.corns')}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contacts" class="nav-link links">{{$t('header.contacts')}}</a>
-                    </li>
-                </ul>
-            </div>
+          </transition>
         </div>
-    </header>
+        <a href="#corn-snacks" class="nav-link">{{ $t('header.corns') }}</a>
+        <a href="#contacts" class="nav-link">{{ $t('header.contacts') }}</a>
+      </nav>
+
+      <!-- Right controls: lang + burger -->
+      <div class="header-controls">
+        <!-- Language switcher (desktop) -->
+        <button class="lang-btn desktop-lang" @click="switchLocale($i18n.locale === 'en' ? 'uk' : 'en')" :title="$i18n.locale === 'en' ? 'Switch to Ukrainian' : 'Switch to English'">
+          <component :is="$i18n.locale === 'en' ? 'UAFlag' : 'UKFlag'" class="flag-icon"/>
+          <span>{{ $i18n.locale === 'en' ? 'UA' : 'EN' }}</span>
+        </button>
+
+        <!-- Burger button (mobile) -->
+        <button class="burger-btn" @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen" aria-label="Відкрити меню">
+          <span class="burger-line" :class="{ open: mobileOpen }"></span>
+          <span class="burger-line" :class="{ open: mobileOpen }"></span>
+          <span class="burger-line" :class="{ open: mobileOpen }"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <transition name="slide-down">
+      <div v-if="mobileOpen" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобільне меню">
+        <nav class="mobile-nav">
+          <a href="#carouselExampleIndicators" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.about') }}</a>
+          <div class="mobile-nav-group">
+            <button class="mobile-nav-link mobile-dropdown-btn" @click="mobileDropdownOpen = !mobileDropdownOpen">
+              {{ $t('header.popcorn') }}
+              <svg class="chevron" :class="{ rotated: mobileDropdownOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <transition name="fade">
+              <div v-if="mobileDropdownOpen" class="mobile-submenu">
+                <a href="#caramel-popcorn" class="mobile-sub-link" @click="mobileOpen = false">{{ $t('header.caramel_pop') }}</a>
+                <a href="#ready-popcorn" class="mobile-sub-link" @click="mobileOpen = false">{{ $t('header.ready_pop') }}</a>
+              </div>
+            </transition>
+          </div>
+          <a href="#corn-snacks" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.corns') }}</a>
+          <a href="#contacts" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.contacts') }}</a>
+        </nav>
+        <div class="mobile-footer">
+          <button class="lang-btn" @click="switchLocale($i18n.locale === 'en' ? 'uk' : 'en')">
+            <component :is="$i18n.locale === 'en' ? 'UAFlag' : 'UKFlag'" class="flag-icon"/>
+            <span>{{ $i18n.locale === 'en' ? 'UA' : 'EN' }}</span>
+          </button>
+        </div>
+      </div>
+    </transition>
+  </header>
 </template>
 
 <script>
-import UKFlag from "@/assets/country/UKFlag.vue";
-import UAFlag from "@/assets/country/UAFlag.vue";
+  import UKFlag from "@/assets/country/UKFlag.vue";
+  import UAFlag from "@/assets/country/UAFlag.vue";
 
-export default {
+  export default {
     name: "SnacksHeader",
-    components: {UAFlag, UKFlag},
+    components: { UAFlag, UKFlag },
+    directives: {
+      clickOutside: {
+        mounted(el, binding) {
+          el._clickOutsideHandler = (event) => {
+            if (!el.contains(event.target)) binding.value(event);
+          };
+          document.addEventListener('click', el._clickOutsideHandler);
+        },
+        unmounted(el) {
+          document.removeEventListener('click', el._clickOutsideHandler);
+        },
+      },
+    },
     data() {
-        return {
-            closed: true
-        }
+      return {
+        mobileOpen: false,
+        dropdownOpen: false,
+        mobileDropdownOpen: false,
+        isScrolled: false,
+      };
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll, { passive: true });
+    },
+    beforeUnmount() {
+      window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
-        switchLocale(locale) {
-            this.$i18n.locale = locale;
-        }
-    }
-}
+      switchLocale(locale) {
+        this.$i18n.locale = locale;
+      },
+      handleScroll() {
+        this.isScrolled = window.scrollY > 10;
+      },
+    },
+    watch: {
+      $route() {
+        this.mobileOpen = false;
+        this.dropdownOpen = false;
+      },
+    },
+  };
 </script>
 
 <style scoped>
-/* Add any custom styles here */
-.header{
-    /*border-bottom: 2px solid #2b2f32;*/
-}
-.social-icons-instagram {
-    margin-right: 20px;
-}
-.logo img{
-    height: 70px;
-}
-.navbar-toggler {
-    background: transparent!important;
-}
-.navbar-toggler-icon {
-    color:red;
-}
-/* Styles for social media icons */
-.social-icons {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    top: 50px;
-    right: 0;
+/* ── tokens ── */
+:root {
+  --c-bg: #F5F0E8;
+  --c-dark: #2b2f32;
+  --c-yellow: #F5C518;
+  --c-yellow-hover: #e0b200;
+  --c-white: #ffffff;
+  --h-height: 72px;
+  --font-main: 'Arial', 'Helvetica Neue', sans-serif;
+  --font-bold: 'Arial Black', 'Arial', sans-serif;
+  --radius: 8px;
+  --shadow: 0 2px 16px rgba(43, 47, 50, 0.08);
 }
 
-.social-icon {
-    margin-right: 10px;
-    color: #2b2f32; /* Adjust color as needed */
+/* ── layout ── */
+.snacks-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--c-bg);
+  box-shadow: var(--shadow);
+  font-family: var(--font-main);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Style the logo */
-.navbar-brand {
-    margin-right: auto;
-}
-@media (max-width: 990px) {
-    .adaptive {
-        flex-direction: row!important;
-    }
-    .social-icons {
-        display: none;
-    }
-    .nav-item {
-        text-align: left;
-    }
-}
-@media (min-width: 990px) {
-    .burger {
-        display: none!important;
-    }
-}
-.links{
-    color: #2b2f32;
-    font-weight: 600;
-    font-family: sans-serif;
-    cursor: pointer;
-}
-.flags{
-    display: flex;
-    align-items: center;
-    padding-right: var(--bs-navbar-nav-link-padding-x);
-    padding-left: var(--bs-navbar-nav-link-padding-x);
-    gap: 10px;
-}
-.flag-icons{
-    margin-right: 5px;
-}
-.links:hover {
-    color: #2b2f32;
+.snacks-header.scrolled {
+  background: #ffffff;
+  box-shadow: 0 2px 20px rgba(43, 47, 50, 0.12);
 }
 
-/* Hover styles for dropdown */
+.logo-img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.header-top-bar {
+  height: 4px;
+  background: var(--c-yellow);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: var(--h-height);
+  gap: 24px;
+}
+
+/* ── logo ── */
+.header-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-svg {
+  height: 52px;
+  width: auto;
+}
+
+/* ── desktop nav ── */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  color: var(--c-dark);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  position: relative;
+  transition: color 0.18s, background 0.18s;
+  letter-spacing: 0.01em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--c-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--c-dark);
+  outline: none;
+}
+
+/* ── dropdown ── */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--c-dark);
+  border-radius: var(--radius);
+  padding: 8px;
+  min-width: 200px;
+  box-shadow: 0 8px 24px rgba(43, 47, 50, 0.18);
+  z-index: 100;
+}
+
+.dropdown-item {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
 .dropdown-item:hover {
-    background-color: #2b2f32;
+  background: var(--c-yellow);
+  color: var(--c-dark);
 }
-.drp-link{
-    color: #fff;
-    font-weight: 600;
-    font-family: sans-serif;
-    cursor: pointer;
+
+/* ── controls ── */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
-.nav-link.dropdown-toggle.links.show {
-    color: #2b2f32; /* Color for dropdown toggle when dropdown is shown */
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 2px solid var(--c-dark);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--c-dark);
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  font-family: inherit;
 }
-.navbar-toggler{
-    background-color: #2b2f32;
+
+.lang-btn:hover {
+  background: var(--c-dark);
+  color: #fff;
+}
+
+.flag-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ── burger ── */
+.burger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  transition: background 0.15s;
+}
+
+.burger-btn:hover {
+  background: rgba(43, 47, 50, 0.08);
+}
+
+.burger-line {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--c-dark);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+  transform-origin: center;
+}
+
+.burger-line:nth-child(1).open { transform: translateY(7.5px) rotate(45deg); }
+.burger-line:nth-child(2).open { opacity: 0; transform: scaleX(0); }
+.burger-line:nth-child(3).open { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ── mobile menu ── */
+.mobile-menu {
+  background: var(--c-bg);
+  border-top: 1px solid rgba(43, 47, 50, 0.1);
+  padding: 12px 24px 24px;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--c-dark);
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  padding: 14px 4px;
+  border-bottom: 1px solid rgba(43, 47, 50, 0.08);
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+  transition: color 0.15s;
+}
+
+.mobile-nav-link:hover { color: var(--c-yellow-hover); }
+
+.mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  padding-bottom: 8px;
+  gap: 2px;
+}
+
+.mobile-sub-link {
+  color: var(--c-dark);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(43, 47, 50, 0.06);
+  display: block;
+  transition: color 0.15s;
+}
+
+.mobile-sub-link:hover { color: var(--c-yellow-hover); }
+
+.mobile-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ── transitions ── */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  max-height: 500px;
+}
+.slide-down-enter-from,
+.slide-down-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+
+.dropdown-fade-enter-active,
+.dropdown-fade-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.dropdown-fade-enter-from,
+.dropdown-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+/* ── responsive ── */
+@media (max-width: 768px) {
+  .desktop-nav,
+  .desktop-lang {
+    display: none;
+  }
+  .burger-btn {
+    display: flex;
+  }
+  .header-inner {
+    padding: 0 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none !important;
+  }
+  .burger-btn {
+    display: none;
+  }
+}
+
+/* ── accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-yellow);
+  outline-offset: 2px;
 }
 </style>

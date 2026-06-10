@@ -46,12 +46,12 @@
       return {
         windowWidth: window.innerWidth,
         items: [
-          { name: 'products.caramel_popcorn_150',    background: caramel_150g,       tag: ['150'],  qty: 12 },
-          { name: 'products.fruit_mix_popcorn_100',  background: caramel_fruit_100g, tag: ['100'],  qty: 15 },
+          { name: 'products.caramel_popcorn_150',    background: caramel_150g,       tag: ['150'],  qty: 16 },
+          { name: 'products.fruit_mix_popcorn_100',  background: caramel_fruit_100g, tag: ['100'],  qty: 16 },
           { name: 'products.caramel_popcorn',        background: caramel_52_5,       tag: ['52,5'], qty: 20 },
-          { name: 'products.fruit_popcorn',          background: caramel_fruit_55,   tag: ['55'],   qty: 20 },
+          { name: 'products.fruit_popcorn',          background: caramel_fruit_55,   tag: ['55'],   qty: 16 },
           { name: 'products.chocolate_popcorn',      background: caramel_choc_55,    tag: ['55'],   qty: 20 },
-          { name: 'products.caramel_surprise_popcorn', background: caramel_surprise, tag: ['100'],  qty: 15 },
+          { name: 'products.caramel_surprise_popcorn', background: caramel_surprise, tag: ['100'],  qty: 16 },
         ],
       }
     },

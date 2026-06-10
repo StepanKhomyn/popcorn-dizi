@@ -1,5 +1,5 @@
 .card-carousel-cards .card-carousel--card {
-    margin: 0 10px;
+    /*margin: 0 10px;*/
     cursor: pointer;
     box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
     background-color: #fff;
