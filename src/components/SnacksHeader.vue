@@ -10,34 +10,29 @@
       <!-- Desktop nav -->
       <nav class="header-nav desktop-nav" aria-label="Головна навігація">
         <a href="#carouselExampleIndicators" class="nav-link">{{ $t('header.about') }}</a>
-        <div class="nav-dropdown" v-click-outside="() => dropdownOpen = false">
-          <button class="nav-link dropdown-btn" :aria-expanded="dropdownOpen" @click="dropdownOpen = !dropdownOpen">
-            {{ $t('header.popcorn') }}
-            <svg class="chevron" :class="{ rotated: dropdownOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <transition name="dropdown-fade">
-            <div class="dropdown-menu" v-show="dropdownOpen">
-              <a href="#caramel-popcorn" class="dropdown-item" @click="dropdownOpen = false">{{ $t('header.caramel_pop') }}</a>
-              <a href="#ready-popcorn" class="dropdown-item" @click="dropdownOpen = false">{{ $t('header.ready_pop') }}</a>
-            </div>
-          </transition>
-        </div>
+        <a href="#caramel-popcorn" class="nav-link">{{ $t('header.popcorn') }}</a>
         <a href="#corn-snacks" class="nav-link">{{ $t('header.corns') }}</a>
-        <a href="#contacts" class="nav-link">{{ $t('header.contacts') }}</a>
+        <a href="#contacts"    class="nav-link">{{ $t('header.contacts') }}</a>
       </nav>
 
-      <!-- Right controls: lang + burger -->
+      <!-- Right controls -->
       <div class="header-controls">
-        <!-- Language switcher (desktop) -->
-        <button class="lang-btn desktop-lang" @click="switchLocale($i18n.locale === 'en' ? 'uk' : 'en')" :title="$i18n.locale === 'en' ? 'Switch to Ukrainian' : 'Switch to English'">
+        <button
+            class="lang-btn desktop-lang"
+            @click="switchLocale($i18n.locale === 'en' ? 'uk' : 'en')"
+            :title="$i18n.locale === 'en' ? 'Switch to Ukrainian' : 'Switch to English'"
+        >
           <component :is="$i18n.locale === 'en' ? 'UAFlag' : 'UKFlag'" class="flag-icon"/>
           <span>{{ $i18n.locale === 'en' ? 'UA' : 'EN' }}</span>
         </button>
 
-        <!-- Burger button (mobile) -->
-        <button class="burger-btn" @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen" aria-label="Відкрити меню">
+        <!-- Burger -->
+        <button
+            class="burger-btn"
+            @click.stop="mobileOpen = !mobileOpen"
+            :aria-expanded="mobileOpen"
+            aria-label="Відкрити меню"
+        >
           <span class="burger-line" :class="{ open: mobileOpen }"></span>
           <span class="burger-line" :class="{ open: mobileOpen }"></span>
           <span class="burger-line" :class="{ open: mobileOpen }"></span>
@@ -45,36 +40,23 @@
       </div>
     </div>
 
-    <!-- Mobile drawer -->
-    <transition name="slide-down">
-      <div v-if="mobileOpen" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобільне меню">
-        <nav class="mobile-nav">
-          <a href="#carouselExampleIndicators" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.about') }}</a>
-          <div class="mobile-nav-group">
-            <button class="mobile-nav-link mobile-dropdown-btn" @click="mobileDropdownOpen = !mobileDropdownOpen">
-              {{ $t('header.popcorn') }}
-              <svg class="chevron" :class="{ rotated: mobileDropdownOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <transition name="fade">
-              <div v-if="mobileDropdownOpen" class="mobile-submenu">
-                <a href="#caramel-popcorn" class="mobile-sub-link" @click="mobileOpen = false">{{ $t('header.caramel_pop') }}</a>
-                <a href="#ready-popcorn" class="mobile-sub-link" @click="mobileOpen = false">{{ $t('header.ready_pop') }}</a>
-              </div>
-            </transition>
-          </div>
-          <a href="#corn-snacks" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.corns') }}</a>
-          <a href="#contacts" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.contacts') }}</a>
-        </nav>
-        <div class="mobile-footer">
-          <button class="lang-btn" @click="switchLocale($i18n.locale === 'en' ? 'uk' : 'en')">
-            <component :is="$i18n.locale === 'en' ? 'UAFlag' : 'UKFlag'" class="flag-icon"/>
-            <span>{{ $i18n.locale === 'en' ? 'UA' : 'EN' }}</span>
-          </button>
-        </div>
+    <!-- Mobile menu -->
+    <div v-if="mobileOpen" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобільне меню">
+      <nav class="mobile-nav">
+        <a href="#carouselExampleIndicators" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.about') }}</a>
+
+        <a href="#caramel-popcorn" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.popcorn') }}</a>
+
+        <a href="#corn-snacks" class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.corns') }}</a>
+        <a href="#contacts"    class="mobile-nav-link" @click="mobileOpen = false">{{ $t('header.contacts') }}</a>
+      </nav>
+      <div class="mobile-footer">
+        <button class="lang-btn" @click="switchLocale($i18n.locale === 'en' ? 'uk' : 'en')">
+          <component :is="$i18n.locale === 'en' ? 'UAFlag' : 'UKFlag'" class="flag-icon"/>
+          <span>{{ $i18n.locale === 'en' ? 'UA' : 'EN' }}</span>
+        </button>
       </div>
-    </transition>
+    </div>
   </header>
 </template>
 
@@ -85,19 +67,6 @@
   export default {
     name: "SnacksHeader",
     components: { UAFlag, UKFlag },
-    directives: {
-      clickOutside: {
-        mounted(el, binding) {
-          el._clickOutsideHandler = (event) => {
-            if (!el.contains(event.target)) binding.value(event);
-          };
-          document.addEventListener('click', el._clickOutsideHandler);
-        },
-        unmounted(el) {
-          document.removeEventListener('click', el._clickOutsideHandler);
-        },
-      },
-    },
     data() {
       return {
         mobileOpen: false,
@@ -108,9 +77,11 @@
     },
     mounted() {
       window.addEventListener('scroll', this.handleScroll, { passive: true });
+      document.addEventListener('click', this.handleOutsideClick);
     },
     beforeUnmount() {
       window.removeEventListener('scroll', this.handleScroll);
+      document.removeEventListener('click', this.handleOutsideClick);
     },
     methods: {
       switchLocale(locale) {
@@ -118,6 +89,14 @@
       },
       handleScroll() {
         this.isScrolled = window.scrollY > 10;
+      },
+      handleOutsideClick(event) {
+        if (this.$refs.dropdownRef && !this.$refs.dropdownRef.contains(event.target)) {
+          this.dropdownOpen = false;
+        }
+        if (this.$el && !this.$el.contains(event.target)) {
+          this.mobileOpen = false;
+        }
       },
     },
     watch: {
@@ -139,19 +118,18 @@
   --c-white: #ffffff;
   --h-height: 72px;
   --font-main: 'Arial', 'Helvetica Neue', sans-serif;
-  --font-bold: 'Arial Black', 'Arial', sans-serif;
   --radius: 8px;
   --shadow: 0 2px 16px rgba(43, 47, 50, 0.08);
 }
 
-/* ── layout ── */
+/* ── header ── */
 .snacks-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--c-bg);
-  box-shadow: var(--shadow);
-  font-family: var(--font-main);
+  background: #F5F0E8;
+  box-shadow: 0 2px 16px rgba(43, 47, 50, 0.08);
+  font-family: 'Arial', 'Helvetica Neue', sans-serif;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -160,15 +138,9 @@
   box-shadow: 0 2px 20px rgba(43, 47, 50, 0.12);
 }
 
-.logo-img {
-  height: 60px;
-  width: auto;
-  display: block;
-}
-
 .header-top-bar {
   height: 4px;
-  background: var(--c-yellow);
+  background: #F5C518;
 }
 
 .header-inner {
@@ -178,7 +150,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-  height: var(--h-height);
+  height: 72px;
   gap: 24px;
 }
 
@@ -190,9 +162,10 @@
   text-decoration: none;
 }
 
-.logo-svg {
-  height: 52px;
+.logo-img {
+  height: 60px;
   width: auto;
+  display: block;
 }
 
 /* ── desktop nav ── */
@@ -205,12 +178,12 @@
 }
 
 .nav-link {
-  color: var(--c-dark);
+  color: #2b2f32;
   font-weight: 700;
   font-size: 15px;
   text-decoration: none;
   padding: 6px 14px;
-  border-radius: var(--radius);
+  border-radius: 8px;
   position: relative;
   transition: color 0.18s, background 0.18s;
   letter-spacing: 0.01em;
@@ -227,7 +200,7 @@
   left: 14px;
   right: 14px;
   height: 2px;
-  background: var(--c-yellow);
+  background: #F5C518;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s ease;
@@ -241,7 +214,7 @@
 
 .nav-link:hover,
 .nav-link:focus-visible {
-  color: var(--c-dark);
+  color: #2b2f32;
   outline: none;
 }
 
@@ -264,33 +237,35 @@
   transform: rotate(180deg);
 }
 
+/* Ключовий фікс: задаємо position, z-index та прибираємо pointer-events на батьку */
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  background: var(--c-dark);
-  border-radius: var(--radius);
+  background: #2b2f32;
+  border-radius: 8px;
   padding: 8px;
   min-width: 200px;
-  box-shadow: 0 8px 24px rgba(43, 47, 50, 0.18);
-  z-index: 100;
+  box-shadow: 0 8px 24px rgba(43, 47, 50, 0.25);
+  z-index: 9999;
 }
 
 .dropdown-item {
   display: block;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
   font-size: 14px;
   padding: 10px 16px;
   border-radius: 6px;
   text-decoration: none;
   transition: background 0.15s;
+  white-space: nowrap;
 }
 
 .dropdown-item:hover {
-  background: var(--c-yellow);
-  color: var(--c-dark);
+  background: #F5C518;
+  color: #2b2f32;
 }
 
 /* ── controls ── */
@@ -306,20 +281,20 @@
   align-items: center;
   gap: 6px;
   background: transparent;
-  border: 2px solid var(--c-dark);
+  border: 2px solid #2b2f32;
   border-radius: 20px;
   padding: 5px 12px;
   font-weight: 700;
   font-size: 13px;
-  color: var(--c-dark);
+  color: #2b2f32;
   cursor: pointer;
   transition: background 0.18s, color 0.18s;
   font-family: inherit;
 }
 
 .lang-btn:hover {
-  background: var(--c-dark);
-  color: #fff;
+  background: #2b2f32;
+  color: #ffffff;
 }
 
 .flag-icon {
@@ -330,7 +305,7 @@
   flex-shrink: 0;
 }
 
-/* ── burger ── */
+/* ── burger — КЛЮЧОВИЙ ФІК: явно display:flex на мобільному ── */
 .burger-btn {
   display: none;
   flex-direction: column;
@@ -343,7 +318,7 @@
   padding: 6px;
   width: 40px;
   height: 40px;
-  border-radius: var(--radius);
+  border-radius: 8px;
   transition: background 0.15s;
 }
 
@@ -355,9 +330,9 @@
   display: block;
   width: 24px;
   height: 2.5px;
-  background: var(--c-dark);
+  background: #2b2f32;
   border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
   transform-origin: center;
 }
 
@@ -367,9 +342,10 @@
 
 /* ── mobile menu ── */
 .mobile-menu {
-  background: var(--c-bg);
+  background: #F5F0E8;
   border-top: 1px solid rgba(43, 47, 50, 0.1);
   padding: 12px 24px 24px;
+  /* Прибрано display:none — тепер v-if керує видимістю */
 }
 
 .mobile-nav {
@@ -382,7 +358,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--c-dark);
+  color: #2b2f32;
   font-weight: 700;
   font-size: 17px;
   text-decoration: none;
@@ -399,7 +375,7 @@
   transition: color 0.15s;
 }
 
-.mobile-nav-link:hover { color: var(--c-yellow-hover); }
+.mobile-nav-link:hover { color: #e0b200; }
 
 .mobile-submenu {
   display: flex;
@@ -410,7 +386,7 @@
 }
 
 .mobile-sub-link {
-  color: var(--c-dark);
+  color: #2b2f32;
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;
@@ -420,7 +396,7 @@
   transition: color 0.15s;
 }
 
-.mobile-sub-link:hover { color: var(--c-yellow-hover); }
+.mobile-sub-link:hover { color: #e0b200; }
 
 .mobile-footer {
   margin-top: 20px;
@@ -428,40 +404,14 @@
   justify-content: flex-start;
 }
 
-/* ── transitions ── */
-.slide-down-enter-active,
-.slide-down-leave-active {
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  overflow: hidden;
-  max-height: 500px;
-}
-.slide-down-enter-from,
-.slide-down-leave-to {
-  max-height: 0;
-  opacity: 0;
-}
-
-.fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
-.fade-enter-from, .fade-leave-to { opacity: 0; }
-
-.dropdown-fade-enter-active,
-.dropdown-fade-leave-active {
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-.dropdown-fade-enter-from,
-.dropdown-fade-leave-to {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-6px);
-}
-
 /* ── responsive ── */
 @media (max-width: 768px) {
   .desktop-nav,
   .desktop-lang {
-    display: none;
+    display: none !important;
   }
   .burger-btn {
-    display: flex;
+    display: flex !important;
   }
   .header-inner {
     padding: 0 16px;
@@ -469,11 +419,8 @@
 }
 
 @media (min-width: 769px) {
-  .mobile-menu {
-    display: none !important;
-  }
   .burger-btn {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -486,7 +433,7 @@
 }
 
 :focus-visible {
-  outline: 2px solid var(--c-yellow);
+  outline: 2px solid #F5C518;
   outline-offset: 2px;
 }
 </style>
