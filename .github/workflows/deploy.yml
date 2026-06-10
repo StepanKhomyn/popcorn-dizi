@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # Екшен спрацює, коли ти робиш push у гілку master
+
+# Дозволяємо екшену перезаписувати вміст гілки gh-pages
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # Стабільна версія Node.js для збірки Vue 2
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci # Чисте встановлення залежностей (швидше і надійніше за npm i)
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # Папка, яку ми деплоїмо (результат npm run build)
+          branch: gh-pages # Гілка, куди злетять файли
