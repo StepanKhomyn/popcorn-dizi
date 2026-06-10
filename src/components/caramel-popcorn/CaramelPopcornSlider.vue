@@ -1,8 +1,18 @@
 <template>
   <div class="w-100 pt-3 pb-3 mt-1" id="caramel-popcorn">
-    <h2 class="fs-2 text-center heading-content">{{ $t('header.caramel_pop') }}</h2>
-    <Carousel :items-to-show="itemsToShow" :wrap-around="true" :transition="500">
-      <Slide v-for="(item, index) in items" :key="index" class="card-carousel-cards">
+    <h2 class="fs-2 text-center heading-content">
+      {{ $t("header.caramel_pop") }}
+    </h2>
+    <Carousel
+      :items-to-show="itemsToShow"
+      :wrap-around="true"
+      :transition="500"
+    >
+      <Slide
+        v-for="(item, index) in items"
+        :key="index"
+        class="card-carousel-cards"
+      >
         <div class="card-carousel--card">
           <div class="card-img-wrap">
             <img :src="item.background" :alt="$t(item.name)" />
@@ -10,12 +20,17 @@
           <div class="card-carousel--card--footer">
             <p class="product-name">{{ $t(item.name) }}</p>
             <div class="tags-row">
-              <span class="tag" v-for="(tag, tagIndex) in item.tag" :key="tagIndex">
-                {{ tag }} {{ $t('products.gram') }}
+              <span
+                class="tag"
+                v-for="(tag, tagIndex) in item.tag"
+                :key="tagIndex"
+              >
+                {{ tag }} {{ $t("products.gram") }}
               </span>
             </div>
             <p class="qty-info">
-              {{ $t('products.group_qty') }}: <strong>{{ item.qty }}</strong> {{ $t('products.pcs') }}
+              {{ $t("products.group_qty") }}: <strong>{{ item.qty }}</strong>
+              {{ $t("products.pcs") }}
             </p>
           </div>
         </div>
@@ -28,55 +43,93 @@
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
-  import { Carousel, Navigation, Slide } from 'vue3-carousel'
-  import 'vue3-carousel/dist/carousel.css'
+import { defineComponent } from "vue";
+import { Carousel, Navigation, Slide } from "vue3-carousel";
+import "vue3-carousel/dist/carousel.css";
 
-  import caramel_150g       from "./slider-element/caramel_150g.png"
-  import caramel_fruit_100g from "./slider-element/caramel_fruit_100g.png"
-  import caramel_52_5       from "./slider-element/caramel_52.5.png"
-  import caramel_fruit_55   from "./slider-element/caramel_fruit_55.png"
-  import caramel_choc_55    from "./slider-element/caramel_chocolate_55.png"
-  import caramel_surprise   from "./slider-element/caramel_dizzi_100.png"
+import caramel_150g from "./slider-element/caramel_150g.png";
+import caramel_fruit_100g from "./slider-element/caramel_fruit_100g.png";
+import caramel_52_5 from "./slider-element/caramel_52.5.png";
+import caramel_fruit_55 from "./slider-element/caramel_fruit_55.png";
+import caramel_choc_55 from "./slider-element/caramel_chocolate_55.png";
+import caramel_surprise from "./slider-element/caramel_dizzi_100.png";
 
-  export default defineComponent({
-    name: 'CaramelPopcornSlider',
-    components: { Carousel, Slide, Navigation },
-    data() {
-      return {
-        windowWidth: window.innerWidth,
-        items: [
-          { name: 'products.caramel_popcorn_150',    background: caramel_150g,       tag: ['150'],  qty: 12 },
-          { name: 'products.fruit_mix_popcorn_100',  background: caramel_fruit_100g, tag: ['100'],  qty: 15 },
-          { name: 'products.caramel_popcorn',        background: caramel_52_5,       tag: ['52,5'], qty: 20 },
-          { name: 'products.fruit_popcorn',          background: caramel_fruit_55,   tag: ['55'],   qty: 20 },
-          { name: 'products.chocolate_popcorn',      background: caramel_choc_55,    tag: ['55'],   qty: 20 },
-          { name: 'products.caramel_surprise_popcorn', background: caramel_surprise, tag: ['100'],  qty: 15 },
-        ],
-      }
+export default defineComponent({
+  name: "CaramelPopcornSlider",
+  components: { Carousel, Slide, Navigation },
+  data() {
+    return {
+      windowWidth: window.innerWidth,
+      items: [
+        {
+          name: "products.caramel_popcorn_150",
+          background: caramel_150g,
+          tag: ["150"],
+          qty: 16,
+        },
+        {
+          name: "products.caramel_popcorn",
+          background: caramel_surprise,
+          tag: ["100"],
+          qty: 16,
+        },
+        {
+          name: "products.fruit_mix_popcorn_100",
+          background: caramel_fruit_100g,
+          tag: ["100"],
+          qty: 16,
+        },
+        {
+          name: "products.caramel_popcorn",
+          background: caramel_52_5,
+          tag: ["52,5"],
+          qty: 20,
+        },
+        {
+          name: "products.fruit_popcorn",
+          background: caramel_fruit_55,
+          tag: ["55"],
+          qty: 20,
+        },
+        {
+          name: "products.chocolate_popcorn",
+          background: caramel_choc_55,
+          tag: ["55"],
+          qty: 20,
+        },
+        {
+          name: "products.caramel_surprise_popcorn",
+          background: caramel_surprise,
+          tag: ["100"],
+          qty: 16,
+        },
+      ],
+    };
+  },
+  computed: {
+    itemsToShow() {
+      if (this.windowWidth < 576) return 1;
+      if (this.windowWidth < 992) return 2;
+      return 3;
     },
-    computed: {
-      itemsToShow() {
-        if (this.windowWidth < 576) return 1
-        if (this.windowWidth < 992) return 2
-        return 3
-      },
+  },
+  mounted() {
+    window.addEventListener("resize", this.onResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
     },
-    mounted() {
-      window.addEventListener('resize', this.onResize)
-    },
-    beforeUnmount() {
-      window.removeEventListener('resize', this.onResize)
-    },
-    methods: {
-      onResize() { this.windowWidth = window.innerWidth },
-    },
-  })
+  },
+});
 </script>
 
 <style scoped>
 .heading-content {
-  font-family: 'Nunito', Roboto, sans-serif;
+  font-family: "Nunito", Roboto, sans-serif;
   font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 8px;
@@ -159,7 +212,7 @@
 }
 
 .product-name {
-  font-family: 'Nunito', Roboto, sans-serif;
+  font-family: "Nunito", Roboto, sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
   color: #1a1a2e;
@@ -204,7 +257,7 @@
 /* ── Nav buttons ── */
 :deep(.carousel__prev),
 :deep(.carousel__next) {
-  background: #FFD700;
+  background: #ffd700;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -219,6 +272,8 @@
 }
 
 @media (max-width: 576px) {
-  .card-img-wrap { height: 180px; }
+  .card-img-wrap {
+    height: 180px;
+  }
 }
 </style>

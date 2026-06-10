@@ -8,12 +8,12 @@
     "contacts": "Contacts"
   },
   "slider": {
-    "slide_1_text_1": "KDM Product LLC was founded in 2016 in the city of Chervonohrad, Lviv region.",
+    "slide_1_text_1": "KDM Product LLC was founded in 2016 in the city of Sheptytskyi, Lviv region.",
     "slide_1_text_2": "We specialize in the production of popcorn and corn sticks of various flavors under the trademark 'TM Dizzi', as well as under our customers' own brands.",
     "metrics": {
       "experience": "Years of experience",
       "types": "Snack varieties",
-      "location": "Lviv / Chervonohrad"
+      "location": "Lviv / Sheptytskyi"
     },
     "slide_2_text_1": "Our company successfully cooperates with the largest retail networks of Ukraine, and also supplies products for export to European countries.",
     "slide_2_text_2": "The ISO22000 international food safety system is implemented in our production.",
@@ -25,9 +25,9 @@
   },
   "form": {
     "main_address": "Legal Address",
-    "address_main": "KDM PRODUCT LLC, 80100, Ukraine, Lviv Region, Chervonohrad, Belzka Street, 8",
+    "address_main": "KDM PRODUCT LLC, 80100, Ukraine, Lviv Region, Sheptytskyi, Belzka Street, 8",
     "working_address": "Manufacturing Address",
-    "address_working": "80100, Ukraine, Lviv Region, Chervonohrad, Promyslova Street, 4",
+    "address_working": "80100, Ukraine, Lviv Region, Sheptytskyi, Promyslova Street, 4",
     "info": "Information Line",
     "phone": "Tel./fax",
     "social_acc": "Social networks",

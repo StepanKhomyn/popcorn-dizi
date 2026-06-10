@@ -11,7 +11,7 @@
     <div class="content-panel">
       <div class="brand-badge">
         <div class="badge-dot" aria-hidden="true"></div>
-        <span>{{ $t("header.about") }} · з 2016 року</span>
+        <span>{{ $t("header.about") }}</span>
       </div>
 
       <h1 class="main-headline">

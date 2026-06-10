@@ -200,8 +200,8 @@ export default {
 }
 
 .dizi-logo {
-  width: 100px;
-  height: 40px;
+  width: 200px;
+  height: 80px;
   background-image: url("@/assets/dizi-logo-without-text.png");
   background-size: contain;
   background-repeat: no-repeat;
