@@ -46,14 +46,14 @@
       return {
         windowWidth: window.innerWidth,
         items: [
-          { name: 'products.item1', background: img1, tag: ['70 г'], qty: 12 },
-          { name: 'products.item2', background: img2, tag: ['20 г'], qty: 30 },
-          { name: 'products.item3', background: img3, tag: ['20 г'], qty: 30 },
-          { name: 'products.item4', background: img4, tag: ['20 г'], qty: 30 },
-          { name: 'products.item5', background: img5, tag: ['20 г'], qty: 30 },
-          { name: 'products.item6', background: img6, tag: ['70 г'], qty: 12 },
-          { name: 'products.item7', background: img7, tag: ['70 г'], qty: 12 },
-          { name: 'products.item8', background: img8, tag: ['70 г'], qty: 12 },
+          { name: 'products.item1', background: img1, tag: ['70 г'], qty: 10 },
+          { name: 'products.item2', background: img2, tag: ['20 г'], qty: 20 },
+          { name: 'products.item3', background: img3, tag: ['20 г'], qty: 20 },
+          { name: 'products.item4', background: img4, tag: ['20 г'], qty: 20 },
+          { name: 'products.item5', background: img5, tag: ['20 г'], qty: 20 },
+          { name: 'products.item6', background: img6, tag: ['70 г'], qty: 10 },
+          { name: 'products.item7', background: img7, tag: ['70 г'], qty: 10 },
+          { name: 'products.item8', background: img8, tag: ['70 г'], qty: 8 },
         ],
       }
     },
