@@ -84,8 +84,8 @@
 }
 
 .carousel {
-  margin: 16px 0 24px;
-  padding: 16px 0 24px;
+  margin: 16px 0 0;
+  padding: 16px 0 0;
 }
 
 .carousel__slide {
