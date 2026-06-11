@@ -5,9 +5,6 @@
 
     <!-- ЛІВА ПАНЕЛЬ: Елегантна журнальна верстка тексту -->
     <div class="content-side">
-      <div class="brand-tag">
-        <span class="tag-line">Premium Quality</span>
-      </div>
 
       <div class="text-container">
         <h2 class="text text-top">

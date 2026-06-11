@@ -13,7 +13,7 @@
     "metrics": {
       "experience": "Years of experience",
       "types": "Snack varieties",
-      "location": "Lviv / Sheptytskyi"
+      "location": "Sheptytskyi"
     },
     "slide_2_text_1": "Our company successfully cooperates with the largest retail networks of Ukraine, and also supplies products for export to European countries.",
     "slide_2_text_2": "The ISO22000 international food safety system is implemented in our production.",
@@ -46,7 +46,7 @@
     "message_placeholder": "Your message…"
   },
   "products": {
-    "group_qty": "Units per case",
+    "group_qty": "Quantity per pack",
     "pcs": "pcs",
     "chocolate_popcorn": "Chocolate caramelized popcorn TM Dizzi",
     "caramel_popcorn": "Caramelized popcorn TM Dizzi",
