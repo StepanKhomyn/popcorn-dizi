@@ -8,24 +8,24 @@
     "contacts": "Contacts"
   },
   "slider": {
-    "slide_1_text_1": "KDM Product LLC was founded in 2016 in the city of Sheptytskyi, Lviv region.",
+    "slide_1_text_1": "LLC «KDM Produkt» was founded in 2016 in the city of Sheptytskyi, Lviv region.",
     "slide_1_text_2": "We specialize in the production of popcorn and corn sticks of various flavors under the trademark 'TM Dizzi', as well as under our customers' own brands.",
     "metrics": {
       "experience": "Years of experience",
       "types": "Snack varieties",
       "location": "Sheptytskyi"
     },
-    "slide_2_text_1": "Our company successfully cooperates with the largest retail networks of Ukraine, and also supplies products for export to European countries.",
+    "slide_2_text_1": "Our company successfully cooperates with the largest retailers in Ukraine, and also supplies products for export to European countries.",
     "slide_2_text_2": "The ISO22000 international food safety system is implemented in our production.",
-    "slide_3_text": "The main goal of KDM Product LLC is for our consumers to be satisfied with the taste of our products, and to be sure that we do not use artificial dyes or preservatives in the production of TM Dizzi snack products.",
-    "forbes_heading": "KDM Product LLC — on the Forbes NEXT 250 3.0 list!",
+    "slide_3_text": "The main goal of KDM Produkt LLC is to satisfied our customers with the taste of our products, and we do not use artificial dyes or preservatives in the production of TM Dizzi snack products.",
+    "forbes_heading": "LLC «KDM Produkt» — on the Forbes NEXT 250 3.0 list!",
     "forbes_body_1": "In 2025, our company was included in the list of the 250 most promising small and medium-sized businesses in Ukraine according to",
     "forbes_body_2": "For us, this is just the beginning of the journey to our dream!",
     "forbes_body_3": "Together — to even greater heights!"
   },
   "form": {
     "main_address": "Legal Address",
-    "address_main": "KDM PRODUCT LLC, 80100, Ukraine, Lviv Region, Sheptytskyi, Belzka Street, 8",
+    "address_main": "LLC «KDM Produkt», 80100, Ukraine, Lviv Region, Sheptytskyi, Belzka Street, 8",
     "working_address": "Manufacturing Address",
     "address_working": "80100, Ukraine, Lviv Region, Sheptytskyi, Promyslova Street, 4",
     "info": "Information Line",
@@ -54,7 +54,7 @@
     "fruit_popcorn": "Popcorn in fruit caramel TM Dizzi",
     "fruit_mix_popcorn_100": "Popcorn in fruit caramel TM Dizzi",
     "caramel_surprise_popcorn": "Caramelized popcorn with a surprise TM Dizzi",
-    "super_chees_popcorn": "ExtraCheese popcorn TM Dizzi",
+    "super_chees_popcorn": "Extra Cheese popcorn TM Dizzi",
     "beckon_popcorn": "Bacon flavored popcorn TM Dizzi",
     "salty_popcorn": "Salted popcorn TM Dizzi",
     "chees_popcorn": "Cheese flavored popcorn TM Dizzi",
@@ -63,7 +63,7 @@
     "corns_for_boys": "Sweet corn sticks with a surprise for boys TM Dizzi",
     "corns_for_girls": "Sweet corn sticks with a surprise for girls TM Dizzi",
     "gram": "g",
-    "item1": "Super Cheese Popcorn TM 'Dizzi'",
+    "item1": "Extra Cheese Popcorn TM 'Dizzi'",
     "item2": "Cheese Flavored Popcorn TM 'Dizzi'",
     "item3": "Sweet Popcorn TM 'Dizzi'",
     "item4": "Salted Popcorn TM 'Dizzi'",

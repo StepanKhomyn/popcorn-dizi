@@ -38,6 +38,7 @@
   import caramel_fruit_55   from "./slider-element/caramel_fruit_55.png"
   import caramel_choc_55    from "./slider-element/caramel_chocolate_55.png"
   import caramel_surprise   from "./slider-element/caramel_dizzi_100.png"
+  import caramel_100   from "./slider-element/caramel_100.png"
 
   export default defineComponent({
     name: 'CaramelPopcornSlider',
@@ -47,7 +48,7 @@
         windowWidth: window.innerWidth,
         items: [
           { name: 'products.caramel_popcorn_150',    background: caramel_150g,       tag: ['150'],  qty: 16 },
-          { name: 'products.caramel_popcorn_150',    background: caramel_surprise,       tag: ['100'],  qty: 16 },
+          { name: 'products.caramel_popcorn_150',    background: caramel_100,       tag: ['100'],  qty: 16 },
           { name: 'products.fruit_mix_popcorn_100',  background: caramel_fruit_100g, tag: ['100'],  qty: 16 },
           { name: 'products.caramel_popcorn',        background: caramel_52_5,       tag: ['52,5'], qty: 20 },
           { name: 'products.fruit_popcorn',          background: caramel_fruit_55,   tag: ['55'],   qty: 20 },
